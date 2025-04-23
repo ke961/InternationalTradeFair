@@ -27,7 +27,7 @@
                         </Label>
                         <TextField fx:id="meetingTimeTextField1" layoutX="97.0" layoutY="209.0" prefHeight="37.0" prefWidth="218.0" />
                         <DatePicker fx:id="meetingDatePicker1" layoutX="98.0" layoutY="146.0" prefHeight="37.0" prefWidth="218.0" />
-                        <ComboBox fx:id="participantComboBox1" layoutX="98.0" layoutY="89.0" prefHeight="37.0" prefWidth="218.0" />
+                        <ComboBox fx:id="participantComboBox" layoutX="98.0" layoutY="89.0" prefHeight="37.0" prefWidth="218.0" />
                         <Button layoutX="376.0" layoutY="101.0" mnemonicParsing="false" onAction="#createMeetingBTOnAction" prefHeight="50.0" prefWidth="103.0" text="Create Meeting">
                            <font>
                               <Font name="System Bold" size="12.0" />
@@ -38,7 +38,7 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
-                        <TableView fx:id="meetingTableView" layoutX="97.0" layoutY="296.0" prefHeight="150.0" prefWidth="605.0">
+                        <TableView fx:id="meetingTableView" layoutX="207.0" layoutY="294.0" prefHeight="150.0" prefWidth="605.0">
                            <columns>
                               <TableColumn fx:id="participantTableColumn" prefWidth="197.5999755859375" text="Participant" />
                               <TableColumn fx:id="dateTableColumn" prefWidth="216.00006103515625" text="Date" />
@@ -50,7 +50,7 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button layoutX="233.0" layoutY="469.0" mnemonicParsing="false" onAction="#updateBTOnAction" prefHeight="26.0" prefWidth="299.0" text="Update">
+                        <Button layoutX="343.0" layoutY="467.0" mnemonicParsing="false" onAction="#updateBTOnAction" prefHeight="26.0" prefWidth="299.0" text="Update">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -75,11 +75,12 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Button layoutX="233.0" layoutY="502.0" mnemonicParsing="false" onAction="#viewMeetingBTOnAction" prefHeight="26.0" prefWidth="299.0" text="View Meeting">
+                        <Button layoutX="343.0" layoutY="500.0" mnemonicParsing="false" onAction="#viewMeetingBTOnAction" prefHeight="26.0" prefWidth="299.0" text="View Meeting">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
+                        <ComboBox fx:id="filteredParticipantComboBox" layoutX="14.0" layoutY="321.0" prefHeight="38.0" prefWidth="180.0" promptText="Select" />
                      </children>
                   </AnchorPane>
             </content>

@@ -44,7 +44,7 @@ public class EventManagerDashboardController
 
     @javafx.fxml.FXML
     public void eventAssignStallBTOnAction(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("AssignStall.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("EventManager/AssignStall.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setTitle("Assign Stall View!");
@@ -54,12 +54,12 @@ public class EventManagerDashboardController
 
     @javafx.fxml.FXML
     public void eventManagerFeedbackBTOnAction(ActionEvent actionEvent) throws IOException {
-//        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("LoginView.fxml"));
-//        Scene scene = new Scene(fxmlLoader.load());
-//        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-//        stage.setTitle("Log In!");
-//        stage.setScene(scene);
-//        stage.show();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("EventManager/FeedBack.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setTitle("Log In!");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @javafx.fxml.FXML
@@ -74,7 +74,7 @@ public class EventManagerDashboardController
 
     @javafx.fxml.FXML
     public void reportsBTOnAction(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ViewReports.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("EventManager/ViewReports.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setTitle("View Reports!");
@@ -84,7 +84,7 @@ public class EventManagerDashboardController
 
     @javafx.fxml.FXML
     public void eventRqstsBTOnAction(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ViewRequestsView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("EventManager/ViewRequestsView.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setTitle("Log In!");
@@ -94,7 +94,7 @@ public class EventManagerDashboardController
 
     @javafx.fxml.FXML
     public void EventArrMTBTOnAction(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ArrangeMeetingView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("EventManager/ArrangeMeetingView.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setTitle("Log In!");

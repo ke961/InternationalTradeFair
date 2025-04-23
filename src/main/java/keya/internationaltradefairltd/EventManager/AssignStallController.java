@@ -1,10 +1,7 @@
 package keya.internationaltradefairltd.EventManager;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class AssignStallController
 {
@@ -58,6 +55,8 @@ public class AssignStallController
     private TableView approvedCompanyTableView;
     @javafx.fxml.FXML
     private TableColumn showApprovedCompantTableColumn;
+    @javafx.fxml.FXML
+    private ComboBox stallIdComboBox;
 
     @javafx.fxml.FXML
     public void initialize() {

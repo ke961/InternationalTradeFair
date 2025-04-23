@@ -1,7 +1,14 @@
 package keya.internationaltradefairltd.EventManager;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
+import keya.internationaltradefairltd.HelloApplication;
+
+import java.io.IOException;
 
 public class ArrangeMeetingViewController
 {
@@ -22,8 +29,6 @@ public class ArrangeMeetingViewController
     @javafx.fxml.FXML
     private TableColumn vTimeTableColumn;
     @javafx.fxml.FXML
-    private ComboBox participantComboBox1;
-    @javafx.fxml.FXML
     private TableColumn vDateTableColumn;
     @javafx.fxml.FXML
     private TextField meetingTimeTextField1;
@@ -33,6 +38,10 @@ public class ArrangeMeetingViewController
     private Tab viewMeetingTab;
     @javafx.fxml.FXML
     private Tab scheduleMeetingTab;
+    @javafx.fxml.FXML
+    private ComboBox participantComboBox;
+    @javafx.fxml.FXML
+    private ComboBox filteredParticipantComboBox;
 
     @javafx.fxml.FXML
     public void initialize() {
@@ -47,7 +56,13 @@ public class ArrangeMeetingViewController
     }
 
     @Deprecated
-    public void backBTOnAction(ActionEvent actionEvent) {
+    public void backBTOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("EventManager/EventManagerDashboard.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setTitle("Log In!");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @javafx.fxml.FXML

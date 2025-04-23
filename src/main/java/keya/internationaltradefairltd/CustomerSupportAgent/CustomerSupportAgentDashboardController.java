@@ -3,7 +3,7 @@ package keya.internationaltradefairltd.CustomerSupportAgent;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 
-public class CustomerSupportAgentDashboard
+public class CustomerSupportAgentDashboardController
 {
     @javafx.fxml.FXML
     private Label userNameLabel;
