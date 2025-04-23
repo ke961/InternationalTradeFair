@@ -7,29 +7,32 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import keya.internationaltradefairltd.HelloApplication;
+import keya.internationaltradefairltd.HelperClass.Meeting;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class ArrangeMeetingViewController
 {
     @javafx.fxml.FXML
-    private TableColumn participantTableColumn;
+    private TableColumn<Meeting,String> participantTableColumn;
     @javafx.fxml.FXML
-    private TableColumn dateTableColumn;
+    private TableColumn<Meeting, LocalDate> dateTableColumn;
     @javafx.fxml.FXML
-    private TableColumn timeTableColumn;
+    private TableColumn<Meeting,String> timeTableColumn;
     @javafx.fxml.FXML
-    private TableView meetingTableView;
+    private TableView<Meeting> meetingTableView;
     @javafx.fxml.FXML
     private DatePicker meetingDatePicker1;
     @javafx.fxml.FXML
-    private TableView viewMeetingTableView;
+    private TableView<Meeting> viewMeetingTableView;
     @javafx.fxml.FXML
-    private TableColumn VparticipantTableColumn;
+    private TableColumn<Meeting,String> VparticipantTableColumn;
     @javafx.fxml.FXML
-    private TableColumn vTimeTableColumn;
+    private TableColumn<Meeting,String> vTimeTableColumn;
     @javafx.fxml.FXML
-    private TableColumn vDateTableColumn;
+    private TableColumn<Meeting,LocalDate> vDateTableColumn;
     @javafx.fxml.FXML
     private TextField meetingTimeTextField1;
     @javafx.fxml.FXML
@@ -39,16 +42,26 @@ public class ArrangeMeetingViewController
     @javafx.fxml.FXML
     private Tab scheduleMeetingTab;
     @javafx.fxml.FXML
-    private ComboBox participantComboBox;
+    private ComboBox<String> participantComboBox;
     @javafx.fxml.FXML
-    private ComboBox filteredParticipantComboBox;
+    private ComboBox<String> filteredParticipantComboBox;
+    ArrayList<Meeting> meetings;
 
     @javafx.fxml.FXML
     public void initialize() {
+        meetings = new ArrayList<>();
+        participantComboBox.getItems().addAll("EventManager","Admin","Quality Controller","Customer Support Agent");
+        
     }
 
     @javafx.fxml.FXML
     public void createMeetingBTOnAction(ActionEvent actionEvent) {
+        String participantName = participantComboBox.getValue();
+        String time = meetingTimeTextField1.getText();
+        LocalDate date = meetingDatePicker1.getValue();
+
+
+
     }
 
     @javafx.fxml.FXML

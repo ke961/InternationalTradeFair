@@ -18,7 +18,7 @@ public class HomePageViewController
 
     @javafx.fxml.FXML
     public void initialize() {
-        userTypeComboBox.getItems().setAll("EventManager","CustomerManager","Vendor","Admin","QualityController","Customer","Advertiser","Investor");
+        userTypeComboBox.getItems().setAll("EventManager","Customer","Vendor","Admin","Quality Controller","Customer Support Agent","Advertiser","Investor");
     }
 
     @FXML
