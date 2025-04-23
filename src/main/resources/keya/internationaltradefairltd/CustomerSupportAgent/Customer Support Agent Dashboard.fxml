@@ -9,7 +9,7 @@
 <AnchorPane prefHeight="546.0" prefWidth="754.0" style="-fx-background-color: #548581;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="keya.internationaltradefairltd.Customer Support Agent FXML.CustomerSupportAgentDashboard">
    <children>
       <Button layoutX="30.0" layoutY="148.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#customerQueriesButtonOnAction" text="Customer Queries" />
-      <Button layoutX="30.0" layoutY="200.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#resolveIssuesButtonOnAction" text="Resolve Issues" />
+      <Button layoutX="30.0" layoutY="200.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#resolveIssuesButtonOnAction" text="Resolve IssuesController" />
       <Button layoutX="34.0" layoutY="260.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#knowledgeBaseButtonOnAction" text="Knowledge Base" />
       <Button layoutX="34.0" layoutY="315.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#faqButtonOnAction" text="FAQ" />
       <Label alignment="CENTER" layoutX="235.0" layoutY="40.0" prefHeight="47.0" prefWidth="260.0" text="Trade Fair System" textFill="WHITE">
