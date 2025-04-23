@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86a1f28b-bcee-4195-868b-1301fb575c05" name="Changes" comment="Commit init">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/keya/internationaltradefairltd/CustomerSupportAgent/CustomerSupportAgentDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/keya/internationaltradefairltd/CustomerSupportAgent/CustomerSupportAgentDashboardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/keya/internationaltradefairltd/EventManager/ArrangeMeetingViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/keya/internationaltradefairltd/EventManager/ArrangeMeetingViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/keya/internationaltradefairltd/EventManager/AssignStallController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/keya/internationaltradefairltd/EventManager/AssignStallController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/keya/internationaltradefairltd/EventManager/EventManagerDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/keya/internationaltradefairltd/EventManager/EventManagerDashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/keya/internationaltradefairltd/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/keya/internationaltradefairltd/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/keya/internationaltradefairltd/HelperClass/Metting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/keya/internationaltradefairltd/HelperClass/Metting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/keya/internationaltradefairltd/EventManager/ArrangeMeetingView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/keya/internationaltradefairltd/EventManager/ArrangeMeetingView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/keya/internationaltradefairltd/EventManager/AssignStall.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/keya/internationaltradefairltd/EventManager/AssignStall.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +148,7 @@
       <workItem from="1745157962840" duration="7077000" />
       <workItem from="1745166884957" duration="11712000" />
       <workItem from="1745237376030" duration="15997000" />
-      <workItem from="1745395796121" duration="1628000" />
+      <workItem from="1745395796121" duration="4214000" />
     </task>
     <task id="LOCAL-00001" summary="Commit init">
       <option name="closed" value="true" />
