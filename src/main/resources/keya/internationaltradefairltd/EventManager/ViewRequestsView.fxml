@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="530.0" prefWidth="787.0" style="-fx-background-color: #548581;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="keya.internationaltradefairltd.EventManager.ViewRequestsViewController">
+   <children>
+      <TextArea fx:id="requestsDetailesTextField" layoutX="172.0" layoutY="92.0" prefHeight="200.0" prefWidth="490.0" />
+      <Label layoutX="172.0" layoutY="66.0" text="Requests Detailes:*" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button fx:id="approveBT" layoutX="177.0" layoutY="302.0" mnemonicParsing="false" onAction="#rqstApproveBTOnAction" prefHeight="26.0" prefWidth="478.0" text="Approve" textFill="#030303">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="rejectBT" layoutX="177.0" layoutY="339.0" mnemonicParsing="false" onAction="#rqstRejectBTOnAction" prefHeight="26.0" prefWidth="478.0" text="Reject" textFill="#030303">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="710.0" layoutY="489.0" mnemonicParsing="false" onAction="#rDetlbackBTOnAction" prefHeight="26.0" prefWidth="62.0" text="Back" />
+   </children>
+</AnchorPane>

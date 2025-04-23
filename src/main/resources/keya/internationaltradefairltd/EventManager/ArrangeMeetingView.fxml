@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="657.0" prefWidth="800.0" style="-fx-background-color: #548581;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="keya.internationaltradefairltd.EventManager.ArrangeMeetingViewController">
+   <children>
+      <TabPane fx:id="mainTab" prefHeight="657.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="scheduleMeetingTab" text="Schedule Meeting">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" layoutX="10.0" layoutY="52.0" prefHeight="32.0" prefWidth="210.0" text="Schedule a Meeting" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold Italic" size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="meetingTimeTextField1" layoutX="97.0" layoutY="209.0" prefHeight="37.0" prefWidth="218.0" />
+                        <DatePicker fx:id="meetingDatePicker1" layoutX="98.0" layoutY="146.0" prefHeight="37.0" prefWidth="218.0" />
+                        <ComboBox fx:id="participantComboBox1" layoutX="98.0" layoutY="89.0" prefHeight="37.0" prefWidth="218.0" />
+                        <Button layoutX="376.0" layoutY="101.0" mnemonicParsing="false" onAction="#createMeetingBTOnAction" prefHeight="50.0" prefWidth="103.0" text="Create Meeting">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="377.0" layoutY="184.0" mnemonicParsing="false" onAction="#deleteMeetingBTOnAction" prefHeight="46.0" prefWidth="102.0" text="delete Meeting">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <TableView fx:id="meetingTableView" layoutX="97.0" layoutY="296.0" prefHeight="150.0" prefWidth="605.0">
+                           <columns>
+                              <TableColumn fx:id="participantTableColumn" prefWidth="197.5999755859375" text="Participant" />
+                              <TableColumn fx:id="dateTableColumn" prefWidth="216.00006103515625" text="Date" />
+                              <TableColumn fx:id="timeTableColumn" prefWidth="191.99993896484375" text="Time" />
+                           </columns>
+                        </TableView>
+                        <Button layoutX="727.0" layoutY="580.0" mnemonicParsing="false" onAction="#sMeetingbackBTOnAction" prefHeight="26.0" prefWidth="58.0" text="back">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="233.0" layoutY="469.0" mnemonicParsing="false" onAction="#updateBTOnAction" prefHeight="26.0" prefWidth="299.0" text="Update">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Label alignment="CENTER" layoutX="3.0" layoutY="14.0" prefHeight="38.0" prefWidth="223.0" text="Trade Fair System" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold Italic" size="25.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="99.0" text="Participant:*" textFill="#fffbfb">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="31.0" layoutY="156.0" text="Date:*" textFill="#fffbfb">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="31.0" layoutY="219.0" text="Time:*" textFill="#fffbfb">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="233.0" layoutY="502.0" mnemonicParsing="false" onAction="#viewMeetingBTOnAction" prefHeight="26.0" prefWidth="299.0" text="View Meeting">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="viewMeetingTab" text="View Meeting">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="viewMeetingTableView" layoutX="89.0" layoutY="97.0" prefHeight="150.0" prefWidth="605.0">
+                           <columns>
+                              <TableColumn fx:id="VparticipantTableColumn" prefWidth="197.5999755859375" text="Participant" />
+                              <TableColumn fx:id="vDateTableColumn" prefWidth="216.00006103515625" text="Date" />
+                              <TableColumn fx:id="vTimeTableColumn" prefWidth="191.99993896484375" text="Time" />
+                           </columns>
+                        </TableView>
+                        <Button layoutX="721.0" layoutY="574.0" mnemonicParsing="false" onAction="#vMeetingBackBTOnAction" prefHeight="26.0" prefWidth="58.0" text="back">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

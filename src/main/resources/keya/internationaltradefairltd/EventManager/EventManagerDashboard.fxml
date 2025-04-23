@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="550.0" prefWidth="841.0" style="-fx-background-color: #548581;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="keya.internationaltradefairltd.EventManager.EventManagerDashboardController">
+   <children>
+      <Label layoutX="283.0" layoutY="46.0" prefHeight="39.0" prefWidth="226.0" text="Trade Fair System" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="26.0" />
+         </font>
+      </Label>
+      <Label fx:id="userNameLabel" layoutX="618.0" layoutY="28.0" text="Welcome, Event Manager" textFill="WHITE" />
+      <Button fx:id="signOutButton" layoutX="760.0" layoutY="24.0" mnemonicParsing="false" onAction="#signOutBTOnAction" style="-fx-background-color: #0e534f;" text="Sign Out" textFill="WHITE" />
+      <Label layoutX="24.0" layoutY="93.0" text="Event Manager Dashboard" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="24.0" layoutY="130.0" mnemonicParsing="false" onAction="#eventVendorRegBTOnAction" text="Vendor Registration" />
+      <Button layoutX="24.0" layoutY="169.0" mnemonicParsing="false" onAction="#EventArrMTBTOnAction" prefHeight="26.0" prefWidth="122.0" text="Arrange Meeting" />
+      <Button layoutX="24.0" layoutY="208.0" mnemonicParsing="false" onAction="#eventRqstsBTOnAction" prefHeight="26.0" prefWidth="122.0" text="View All Requests" />
+      <Button layoutX="765.0" layoutY="512.0" mnemonicParsing="false" onAction="#eventMBKBTOnAction" prefHeight="26.0" prefWidth="62.0" text="Back" />
+      <Button layoutX="24.0" layoutY="248.0" mnemonicParsing="false" onAction="#eventAssignStallBTOnAction" prefHeight="26.0" prefWidth="122.0" text="Assign Stall" />
+      <Button layoutX="24.0" layoutY="289.0" mnemonicParsing="false" onAction="#reportsBTOnAction" prefHeight="26.0" prefWidth="122.0" text="Reports" />
+      <Button layoutX="24.0" layoutY="331.0" mnemonicParsing="false" onAction="#eventManagerFeedbackBTOnAction" prefHeight="26.0" prefWidth="122.0" text="FeedBack" />
+   </children>
+</AnchorPane>

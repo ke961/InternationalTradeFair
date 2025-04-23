@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="477.0" prefWidth="644.0" style="-fx-background-color: #548581;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="keya.internationaltradefairltd.LoginViewController">
+   <children>
+      <Label layoutX="187.0" layoutY="148.0" text="Welcome! Let's take you to your account." textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="126.0" layoutY="63.0" text="Trade Fair System Login" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="33.0" />
+         </font>
+      </Label>
+      <Label layoutX="180.0" layoutY="184.0" text="User Name:*" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <TextField fx:id="logInUserNameTextField" layoutX="180.0" layoutY="208.0" onKeyTyped="#uNameOnKeyTyped" prefHeight="26.0" prefWidth="283.0" />
+      <Label layoutX="181.0" layoutY="243.0" text="Password:*" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <PasswordField fx:id="logInPasswordField" layoutX="181.0" layoutY="267.0" onKeyTyped="#passOnKeyTyped" prefHeight="26.0" prefWidth="281.0" />
+      <Button layoutX="181.0" layoutY="302.0" mnemonicParsing="false" onAction="#loginContinueBTOnAction" prefHeight="26.0" prefWidth="281.0" text="Continue">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Label layoutX="181.0" layoutY="338.0" text="Don't have an account?" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Button depthTest="ENABLE" layoutX="322.0" layoutY="338.0" mnemonicParsing="false" onAction="#signUpOnAction" style="-fx-background-color: transparent; -fx-padding: 0;" text="Sign Up" textFill="WHITE" underline="true">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button layoutX="561.0" layoutY="436.0" mnemonicParsing="false" onAction="#logInbackBTOnAction" prefHeight="26.0" prefWidth="62.0" text="Back">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Line endX="185.99996948242188" endY="-0.39998626708984375" layoutX="312.0" layoutY="113.0" startX="-186.00003051757812" startY="-0.39998626708984375" stroke="WHITE" />
+      <Label layoutX="251.0" layoutY="453.0" text="Trade Fair System 2025" textFill="WHITE" />
+   </children>
+</AnchorPane>
