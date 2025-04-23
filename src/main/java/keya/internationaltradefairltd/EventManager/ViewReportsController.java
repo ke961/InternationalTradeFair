@@ -6,8 +6,6 @@ import javafx.scene.control.*;
 public class ViewReportsController
 {
     @javafx.fxml.FXML
-    private Label userTypeLable;
-    @javafx.fxml.FXML
     private Label reportAboutLable;
     @javafx.fxml.FXML
     private TableColumn userNameTableColumn;
@@ -23,6 +21,8 @@ public class ViewReportsController
     private TableColumn userTypeTableColumn;
     @javafx.fxml.FXML
     private TableColumn reportContentTableColumn;
+    @javafx.fxml.FXML
+    private ComboBox userTypeComboBox;
 
     @javafx.fxml.FXML
     public void initialize() {

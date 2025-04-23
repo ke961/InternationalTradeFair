@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -8,7 +9,6 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="449.0" prefWidth="679.0" style="-fx-background-color: #548581;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="keya.internationaltradefairltd.EventManager.ViewReportsController">
    <children>
@@ -46,13 +46,12 @@
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="userTypeLable" layoutX="180.0" layoutY="107.0" prefHeight="25.0" prefWidth="313.0" text="Label" textFill="WHITE" />
                         <Label layoutX="90.0" layoutY="111.0" prefHeight="17.0" prefWidth="64.0" text="Usertype:" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label layoutX="90.0" layoutY="162.0" prefHeight="17.0" prefWidth="64.0" text="User Name:" textFill="WHITE">
+                        <Label layoutX="90.0" layoutY="162.0" prefHeight="18.0" prefWidth="74.0" text="User Name:" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -65,6 +64,7 @@
                         <Button layoutX="599.0" layoutY="373.0" mnemonicParsing="false" onAction="#detBackBTOnAction" prefHeight="26.0" prefWidth="65.0" text="Back" />
                         <Label fx:id="userNameLable" layoutX="180.0" layoutY="158.0" prefHeight="25.0" prefWidth="313.0" text="Label" textFill="WHITE" />
                         <Label fx:id="reportAboutLable" alignment="TOP_LEFT" layoutX="180.0" layoutY="201.0" prefHeight="115.0" prefWidth="393.0" text="Label" textFill="WHITE" />
+                        <ComboBox fx:id="userTypeComboBox" layoutX="180.0" layoutY="107.0" prefWidth="150.0" />
                      </children>
                   </AnchorPane>
             </content>
