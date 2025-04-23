@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="86a1f28b-bcee-4195-868b-1301fb575c05" name="Changes" comment="Commit init">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/keya/internationaltradefairltd/EventManager/ArrangeMeetingViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/keya/internationaltradefairltd/EventManager/ArrangeMeetingViewController.java" afterDir="false" />
-    </list>
+    <list default="true" id="86a1f28b-bcee-4195-868b-1301fb575c05" name="Changes" comment="Commit init" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -148,7 +145,7 @@
       <workItem from="1745157962840" duration="7077000" />
       <workItem from="1745166884957" duration="11712000" />
       <workItem from="1745237376030" duration="15997000" />
-      <workItem from="1745395796121" duration="4214000" />
+      <workItem from="1745395796121" duration="4631000" />
     </task>
     <task id="LOCAL-00001" summary="Commit init">
       <option name="closed" value="true" />
