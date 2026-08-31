@@ -8,66 +8,90 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="449.0" prefWidth="679.0" style="-fx-background-color: #548581;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="keya.internationaltradefairltd.EventManager.ViewReportsController">
+<AnchorPane prefHeight="650.0" prefWidth="950.0" styleClass="app-gradient-bg" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="keya.internationaltradefairltd.EventManager.ViewReportsController">
    <children>
-      <TabPane fx:id="mainTab" prefHeight="449.0" prefWidth="679.0" style="-fx-background-color: #548581;" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="mainTab" prefHeight="650.0" prefWidth="950.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab fx:id="reportsTab" text="Reports">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView fx:id="reportTableView" layoutX="152.0" layoutY="108.0" prefHeight="146.0" prefWidth="497.0">
-                           <columns>
-                              <TableColumn fx:id="userTypeTableColumn" prefWidth="140.800048828125" text="usertype" />
-                              <TableColumn fx:id="userNameTableColumn" prefWidth="194.39996337890625" text="User Name" />
-                              <TableColumn fx:id="reportContentTableColumn" prefWidth="162.4000244140625" text="report content" />
-                           </columns>
-                        </TableView>
-                        <Label layoutX="312.0" layoutY="14.0" text="Reports" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                        </Label>
-                        <Button layoutX="23.0" layoutY="365.0" mnemonicParsing="false" onAction="#reportBackBTOnAction" prefHeight="32.0" prefWidth="71.0" text="Back" />
-                        <Button layoutX="554.0" layoutY="365.0" mnemonicParsing="false" onAction="#viewReportDetailesBTOnAction" prefHeight="32.0" prefWidth="96.0" text="View Detailes" />
-                        <Button layoutX="40.0" layoutY="181.0" mnemonicParsing="false" onAction="#viewReportsBTOnAction" text="view reports" />
-                     </children>
-                  </AnchorPane>
-            </content>
+          <!-- Tab 1: All Reports -->
+          <Tab fx:id="reportsTab" text="Trade Fair Audit &amp; Incident Reports">
+             <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="950.0">
+                   <children>
+                      <VBox layoutX="30.0" layoutY="20.0" prefWidth="890.0" spacing="15.0">
+                         <children>
+                            <HBox alignment="CENTER_LEFT" spacing="15.0">
+                               <children>
+                                  <Label styleClass="title-section" text="Daily Operations, Gate Revenue &amp; Safety Reports" />
+                                  <Button mnemonicParsing="false" onAction="#viewReportsBTOnAction" style="-fx-padding: 5px 12px;" text="Refresh Reports" />
+                               </children>
+                            </HBox>
+
+                            <TableView fx:id="reportTableView" prefHeight="390.0" prefWidth="890.0">
+                               <columns>
+                                  <TableColumn fx:id="userTypeTableColumn" prefWidth="220.0" text="Reporter Role" />
+                                  <TableColumn fx:id="userNameTableColumn" prefWidth="260.0" text="Reporting Authority / User" />
+                                  <TableColumn fx:id="reportContentTableColumn" prefWidth="405.0" text="Summary &amp; Incident Findings" />
+                               </columns>
+                            </TableView>
+
+                            <HBox alignment="CENTER_RIGHT" spacing="15.0">
+                               <children>
+                                  <Button mnemonicParsing="false" onAction="#viewReportDetailesBTOnAction" prefHeight="35.0" prefWidth="170.0" text="Inspect Report Details →" />
+                                  <Button mnemonicParsing="false" onAction="#reportBackBTOnAction" prefHeight="35.0" prefWidth="110.0" styleClass="btn-secondary" text="← Dashboard" />
+                               </children>
+                            </HBox>
+                         </children>
+                      </VBox>
+                   </children>
+                </AnchorPane>
+             </content>
           </Tab>
-          <Tab text="Detailes">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Label alignment="CENTER" layoutX="239.0" layoutY="24.0" prefHeight="38.0" prefWidth="151.0" text="Report Details" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="90.0" layoutY="111.0" prefHeight="17.0" prefWidth="64.0" text="Usertype:" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="90.0" layoutY="162.0" prefHeight="18.0" prefWidth="74.0" text="User Name:" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="83.0" layoutY="201.0" prefHeight="18.0" prefWidth="90.0" text="Report About:" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <Button layoutX="599.0" layoutY="373.0" mnemonicParsing="false" onAction="#detBackBTOnAction" prefHeight="26.0" prefWidth="65.0" text="Back" />
-                        <Label fx:id="userNameLable" layoutX="180.0" layoutY="158.0" prefHeight="25.0" prefWidth="313.0" text="Label" textFill="WHITE" />
-                        <Label fx:id="reportAboutLable" alignment="TOP_LEFT" layoutX="180.0" layoutY="201.0" prefHeight="115.0" prefWidth="393.0" text="Label" textFill="WHITE" />
-                        <ComboBox fx:id="userTypeComboBox" layoutX="180.0" layoutY="107.0" prefWidth="150.0" />
-                     </children>
-                  </AnchorPane>
-            </content>
+
+          <!-- Tab 2: Report Details -->
+          <Tab text="Report Deep-Dive">
+             <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="950.0">
+                   <children>
+                      <VBox alignment="CENTER" layoutX="175.0" layoutY="50.0" prefHeight="480.0" prefWidth="600.0" spacing="18.0" styleClass="card-panel" style="-fx-padding: 30 35 30 35;">
+                         <children>
+                            <Label styleClass="badge-pill" text="DETAILED AUDIT LOG" />
+                            <Label styleClass="title-section" text="Exhibition Incident &amp; Performance Audit" />
+
+                            <VBox prefWidth="530.0" spacing="12.0">
+                               <children>
+                                  <HBox alignment="CENTER_LEFT" spacing="15.0">
+                                     <children>
+                                        <Label style="-fx-text-fill: #cbd5e1; -fx-font-weight: bold;" text="Filter By Role:" />
+                                        <ComboBox fx:id="userTypeComboBox" prefHeight="32.0" prefWidth="200.0" />
+                                     </children>
+                                  </HBox>
+
+                                  <VBox spacing="4.0">
+                                     <children>
+                                        <Label style="-fx-text-fill: #cbd5e1; -fx-font-weight: bold;" text="Author / Authority:" />
+                                        <Label fx:id="userNameLable" style="-fx-text-fill: #2dd4bf; -fx-font-size: 14px; -fx-font-weight: bold;" text="Select a report to view" />
+                                     </children>
+                                  </VBox>
+
+                                  <VBox spacing="4.0">
+                                     <children>
+                                        <Label style="-fx-text-fill: #cbd5e1; -fx-font-weight: bold;" text="Report Statement &amp; Corrective Measures:" />
+                                        <Label fx:id="reportAboutLable" alignment="TOP_LEFT" prefHeight="170.0" prefWidth="530.0" style="-fx-background-color: #1e293b; -fx-background-radius: 8; -fx-padding: 12; -fx-text-fill: #f8fafc;" text="Report body will be rendered here..." wrapText="true" />
+                                     </children>
+                                  </VBox>
+                               </children>
+                            </VBox>
+
+                            <Button mnemonicParsing="false" onAction="#detBackBTOnAction" prefHeight="32.0" prefWidth="120.0" styleClass="btn-secondary" text="← Back to List" />
+                         </children>
+                      </VBox>
+                   </children>
+                </AnchorPane>
+             </content>
           </Tab>
         </tabs>
       </TabPane>
