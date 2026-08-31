@@ -3,59 +3,77 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #548581;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="keya.internationaltradefairltd.CustomerSupportAgent.CustomerSupportAgentDashboardController">
+<AnchorPane prefHeight="650.0" prefWidth="950.0" styleClass="app-gradient-bg" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="keya.internationaltradefairltd.CustomerSupportAgent.CustomerSupportAgentDashboardController">
    <children>
-      <Label alignment="CENTER" layoutX="250.0" layoutY="35.0" prefHeight="47.0" prefWidth="300.0" text="Trade Fair Support Center" textFill="WHITE">
-         <font>
-            <Font name="System Bold Italic" size="24.0" />
-         </font>
-      </Label>
-      <Label fx:id="userNameLabel" layoutX="460.0" layoutY="18.0" text="Welcome, Customer Care Representative" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Button layoutX="700.0" layoutY="14.0" mnemonicParsing="false" onAction="#signOutButtonOnAction" style="-fx-background-color: #0e534f;" text="Sign Out" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Label layoutX="30.0" layoutY="100.0" text="Customer Care Representative Dashboard" textFill="WHITE">
-         <font>
-            <Font name="System Bold Italic" size="15.0" />
-         </font>
-      </Label>
-      <Button layoutX="30.0" layoutY="140.0" mnemonicParsing="false" onAction="#customerQueriesButtonOnAction" prefHeight="38.0" prefWidth="240.0" text="Customer Queries &amp; Support">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Button>
-      <Button layoutX="30.0" layoutY="190.0" mnemonicParsing="false" onAction="#resolveIssuesButtonOnAction" prefHeight="38.0" prefWidth="240.0" text="Resolve Issues &amp; Tickets">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Button>
-      <Button layoutX="30.0" layoutY="240.0" mnemonicParsing="false" onAction="#knowledgeBaseButtonOnAction" prefHeight="38.0" prefWidth="240.0" text="Knowledge Base &amp; Guidelines">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Button>
-      <Button layoutX="30.0" layoutY="290.0" mnemonicParsing="false" onAction="#faqButtonOnAction" prefHeight="38.0" prefWidth="240.0" text="Frequently Asked Questions (FAQ)">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Button>
-      <Button layoutX="30.0" layoutY="340.0" mnemonicParsing="false" onAction="#summaryButtonOnAction" prefHeight="38.0" prefWidth="240.0" text="Fair Summary &amp; Analytics">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Button>
-      <Button layoutX="700.0" layoutY="495.0" mnemonicParsing="false" onAction="#agentBackButtonOnAction" prefHeight="30.0" prefWidth="75.0" text="Back">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
+      <!-- Top Navigation Header -->
+      <AnchorPane prefHeight="70.0" prefWidth="950.0" styleClass="glass-header">
+         <children>
+            <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="14.0" spacing="12.0">
+               <children>
+                  <Label styleClass="badge-pill" text="SUPPORT HUB" />
+                  <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Customer Care &amp; Support Portal" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="520.0" layoutY="16.0" spacing="15.0">
+               <children>
+                  <Label fx:id="userNameLabel" style="-fx-text-fill: #94a3b8; -fx-font-weight: bold; -fx-font-size: 13px;" text="Welcome, Support Representative" />
+                  <Button mnemonicParsing="false" onAction="#signOutButtonOnAction" styleClass="btn-danger" style="-fx-padding: 6px 14px; -fx-font-size: 11px;" text="Sign Out ⏻" />
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+
+      <!-- Main Dashboard Content -->
+      <VBox layoutX="40.0" layoutY="95.0" prefWidth="870.0" spacing="20.0">
+         <children>
+            <VBox spacing="4.0">
+               <children>
+                  <Label styleClass="title-section" text="Customer Experience, Resolution &amp; Analytics" />
+                  <Label styleClass="subtitle-text" text="Quick access to attendee ticketing issues, vendor inquiries, standard guidelines, and real-time fair analytics" />
+               </children>
+            </VBox>
+
+            <!-- Grid of Feature Cards -->
+            <GridPane hgap="20.0" vgap="18.0">
+               <children>
+                  <!-- Card 1: Customer Queries -->
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#customerQueriesButtonOnAction" prefHeight="95.0" styleClass="btn-nav-card" text="🎫  Customer Queries &amp; Ticketing&#10;     Review open visitor inquiries, ticketing issues, and lost items" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+
+                  <!-- Card 2: Resolve Issues -->
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#resolveIssuesButtonOnAction" prefHeight="95.0" styleClass="btn-nav-card" text="🛠️  Ticket Resolution Desk&#10;     Process in-progress issues, log notes, and mark tickets as resolved" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                  <!-- Card 3: Knowledge Base -->
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#knowledgeBaseButtonOnAction" prefHeight="95.0" styleClass="btn-nav-card" text="📚  Knowledge Base Guidelines&#10;     Searchable operating procedures, fair rules, and SOPs" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+
+                  <!-- Card 4: FAQ -->
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#faqButtonOnAction" prefHeight="95.0" styleClass="btn-nav-card" text="❓  Frequently Asked Questions (FAQ)&#10;     Add and manage standard answers for common visitor questions" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                  <!-- Card 5: Analytics Summary -->
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#summaryButtonOnAction" prefHeight="95.0" styleClass="btn-nav-card" text="📈  Fair Analytics &amp; Executive Summary&#10;     Inspect booth occupancy charts, total revenue, and resolution KPIs" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+               </children>
+               <columnConstraints>
+                  <javafx.scene.layout.ColumnConstraints percentWidth="50.0" />
+                  <javafx.scene.layout.ColumnConstraints percentWidth="50.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <javafx.scene.layout.RowConstraints prefHeight="95.0" />
+                  <javafx.scene.layout.RowConstraints prefHeight="95.0" />
+                  <javafx.scene.layout.RowConstraints prefHeight="95.0" />
+               </rowConstraints>
+            </GridPane>
+
+            <!-- Bottom Bar -->
+            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" style="-fx-padding: 10 0 0 0;">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#agentBackButtonOnAction" prefHeight="32.0" prefWidth="110.0" styleClass="btn-secondary" text="← Portal Home" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
