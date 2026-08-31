@@ -10,9 +10,10 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("EventManager/EventManagerDashboard.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("HomePageView.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Event Manager Dashboard!");
+        stage.setTitle("Dhaka International Trade Fair (DITF) - Portal");
+        stage.setResizable(true);
         stage.setScene(scene);
         stage.show();
     }
