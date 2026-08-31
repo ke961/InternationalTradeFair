@@ -1,92 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="791.0" prefWidth="872.0" style="-fx-background-color: #548581;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="keya.internationaltradefairltd.EventManager.CreatVendorRegistrationFormController">
+<AnchorPane prefHeight="700.0" prefWidth="950.0" styleClass="app-gradient-bg" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="keya.internationaltradefairltd.EventManager.CreatVendorRegistrationFormController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="225.0" layoutY="73.0" prefHeight="38.0" prefWidth="409.0" text="Vendor Registration Form" textAlignment="CENTER" textFill="#fffbfb">
-         <font>
-            <Font name="System Bold Italic" size="22.0" />
-         </font>
-      </Label>
-      <Label layoutX="182.0" layoutY="279.0" text="User Name:*" textFill="#fffcfc">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <TextField fx:id="userNmeTextField" layoutX="181.0" layoutY="303.0" prefHeight="26.0" prefWidth="550.0" />
-      <Label layoutX="478.0" layoutY="340.0" text="Password:*" textFill="#fffcfc">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="348.0" layoutY="730.0" text="You have already registered?" textFill="#fffcfc">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Button depthTest="ENABLE" layoutX="517.0" layoutY="730.0" mnemonicParsing="false" onAction="#loginOnAction" style="-fx-background-color: transparent; -fx-padding: 0;" text="Login" textFill="#fffcfc" underline="true" />
-      <TextField fx:id="firstNameTextField" layoutX="182.0" layoutY="246.0" prefHeight="26.0" prefWidth="274.0" promptText="First Name" />
-      <Label layoutX="186.0" layoutY="219.0" text="Name Of Contact Person:*" textFill="#fffcfc">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <TextField fx:id="lastNameTextField" layoutX="486.0" layoutY="246.0" prefHeight="26.0" prefWidth="245.0" promptText="Last Name" />
-      <Label layoutX="183.0" layoutY="158.0" text="Name Of the Organization/Business:*" textFill="#fffcfc">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <TextField fx:id="organizationNameTextField" layoutX="183.0" layoutY="184.0" prefHeight="26.0" prefWidth="550.0" />
-      <Label layoutX="179.0" layoutY="338.0" text="Phone Number:*" textFill="#fffcfc">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <TextField fx:id="phoneNumberTextField1" layoutX="181.0" layoutY="362.0" prefHeight="26.0" prefWidth="282.0" />
-      <TextArea fx:id="productDetailesTextArea" layoutX="181.0" layoutY="473.0" prefHeight="91.0" prefWidth="550.0" promptText="write here" />
-      <Label layoutX="184.0" layoutY="448.0" prefHeight="18.0" prefWidth="246.0" text="Describe specific products/menu detailes:*" textFill="#fffcfc">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <TextArea fx:id="requestsTextArea" layoutX="183.0" layoutY="596.0" prefHeight="83.0" prefWidth="550.0" promptText="write here" />
-      <Label layoutX="184.0" layoutY="571.0" prefHeight="18.0" prefWidth="226.0" text="Requests if there any(Optional):*" textFill="#fffcfc">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Button layoutX="184.0" layoutY="693.0" mnemonicParsing="false" onAction="#RegisterBTOnAction" prefHeight="26.0" prefWidth="550.0" text="Register">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="795.0" layoutY="748.0" mnemonicParsing="false" onAction="#regBackBTOnAction" prefHeight="26.0" prefWidth="62.0" text="Back">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <TextField fx:id="passwordTextField" layoutX="478.0" layoutY="358.0" prefHeight="26.0" prefWidth="282.0" promptText="Maximum 6 cheracters" />
-      <Label layoutX="183.0" layoutY="132.0" text="Please fill out the information below to be registered as  a vendor *" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="224.0" layoutY="35.0" prefHeight="38.0" prefWidth="467.0" text="Dhaka International Trade Fair(DITF)" textAlignment="CENTER" textFill="#fffbfb">
-         <font>
-            <Font name="System Bold Italic" size="26.0" />
-         </font>
-      </Label>
-      <Button layoutX="715.0" layoutY="750.0" mnemonicParsing="false" onAction="#regDoneBTOnAction" prefHeight="26.0" prefWidth="62.0" text="Done">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
+      <VBox alignment="CENTER" layoutX="100.0" layoutY="20.0" prefHeight="660.0" prefWidth="750.0" spacing="12.0" styleClass="card-panel" style="-fx-padding: 25 35 25 35;">
+         <children>
+            <!-- Badge & Header -->
+            <Label styleClass="badge-pill" text="EXHIBITOR ONBOARDING FORM" />
+            <VBox alignment="CENTER" spacing="2.0">
+               <children>
+                  <Label styleClass="title-hero" text="Vendor Registration Portal" />
+                  <Label styleClass="subtitle-text" text="Register your business to showcase at Dhaka International Trade Fair (DITF)" />
+               </children>
+            </VBox>
+
+            <!-- Form Content -->
+            <VBox prefWidth="680.0" spacing="10.0">
+               <children>
+                  <!-- Org & Country -->
+                  <HBox spacing="12.0">
+                     <children>
+                        <VBox HBox.hgrow="ALWAYS" spacing="3.0">
+                           <children>
+                              <Label style="-fx-text-fill: #cbd5e1; -fx-font-weight: bold; -fx-font-size: 11px;" text="Name of Organization / Business *" />
+                              <TextField fx:id="organizationNameTextField" prefHeight="34.0" promptText="e.g. Walton Hi-Tech, Sony Corp" />
+                           </children>
+                        </VBox>
+                        <VBox prefWidth="200.0" spacing="3.0">
+                           <children>
+                              <Label style="-fx-text-fill: #cbd5e1; -fx-font-weight: bold; -fx-font-size: 11px;" text="Country of Origin" />
+                              <ComboBox fx:id="countryComboBox" maxWidth="1.7976931348623157E308" prefHeight="34.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+
+                  <!-- Contact Person -->
+                  <HBox spacing="12.0">
+                     <children>
+                        <VBox HBox.hgrow="ALWAYS" spacing="3.0">
+                           <children>
+                              <Label style="-fx-text-fill: #cbd5e1; -fx-font-weight: bold; -fx-font-size: 11px;" text="Contact Person (First Name) *" />
+                              <TextField fx:id="firstNameTextField" prefHeight="34.0" promptText="First Name" />
+                           </children>
+                        </VBox>
+                        <VBox HBox.hgrow="ALWAYS" spacing="3.0">
+                           <children>
+                              <Label style="-fx-text-fill: #cbd5e1; -fx-font-weight: bold; -fx-font-size: 11px;" text="Contact Person (Last Name) *" />
+                              <TextField fx:id="lastNameTextField" prefHeight="34.0" promptText="Last Name" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+
+                  <!-- Credentials & Contact -->
+                  <HBox spacing="12.0">
+                     <children>
+                        <VBox HBox.hgrow="ALWAYS" spacing="3.0">
+                           <children>
+                              <Label style="-fx-text-fill: #cbd5e1; -fx-font-weight: bold; -fx-font-size: 11px;" text="Username (min 4 chars) *" />
+                              <TextField fx:id="userNmeTextField" prefHeight="34.0" promptText="Vendor login username" />
+                           </children>
+                        </VBox>
+                        <VBox HBox.hgrow="ALWAYS" spacing="3.0">
+                           <children>
+                              <Label style="-fx-text-fill: #cbd5e1; -fx-font-weight: bold; -fx-font-size: 11px;" text="Password (min 6 chars with number) *" />
+                              <TextField fx:id="passwordTextField" prefHeight="34.0" promptText="Secure password" />
+                           </children>
+                        </VBox>
+                        <VBox HBox.hgrow="ALWAYS" spacing="3.0">
+                           <children>
+                              <Label style="-fx-text-fill: #cbd5e1; -fx-font-weight: bold; -fx-font-size: 11px;" text="Phone Number *" />
+                              <TextField fx:id="phoneNumberTextField1" prefHeight="34.0" promptText="017xxxxxxxx" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+
+                  <!-- Products Description -->
+                  <VBox spacing="3.0">
+                     <children>
+                        <Label style="-fx-text-fill: #cbd5e1; -fx-font-weight: bold; -fx-font-size: 11px;" text="Specific Products / Menu Details *" />
+                        <TextArea fx:id="productDetailesTextArea" prefHeight="65.0" promptText="Describe categories, exhibition showcase items, and product lines..." wrapText="true" />
+                     </children>
+                  </VBox>
+
+                  <!-- Special Requests -->
+                  <VBox spacing="3.0">
+                     <children>
+                        <Label style="-fx-text-fill: #cbd5e1; -fx-font-weight: bold; -fx-font-size: 11px;" text="Special Logistics Requests (Power, Water, Corner Booth) [Optional]" />
+                        <TextArea fx:id="requestsTextArea" prefHeight="50.0" promptText="e.g. 3-phase electricity line, water connection, corner stall..." wrapText="true" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+
+            <!-- Submit Button -->
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#RegisterBTOnAction" prefHeight="38.0" style="-fx-font-size: 13px;" text="Submit Vendor Application ✓" />
+
+            <!-- Bottom Navigation -->
+            <HBox alignment="CENTER" spacing="15.0">
+               <children>
+                  <HBox alignment="CENTER" spacing="5.0">
+                     <children>
+                        <Label style="-fx-text-fill: #94a3b8;" text="Already registered?" />
+                        <Button mnemonicParsing="false" onAction="#loginOnAction" style="-fx-background-color: transparent; -fx-padding: 0; -fx-text-fill: #2dd4bf; -fx-font-weight: bold;" text="Login" underline="true" />
+                     </children>
+                  </HBox>
+                  <Label style="-fx-text-fill: #475569;" text="|" />
+                  <Button mnemonicParsing="false" onAction="#regBackBTOnAction" prefHeight="28.0" prefWidth="90.0" styleClass="btn-secondary" text="← Back" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
