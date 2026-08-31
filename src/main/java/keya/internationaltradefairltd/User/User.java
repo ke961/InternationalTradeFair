@@ -4,14 +4,20 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class User implements Serializable {
-    private String firstName, lastName,userName, password, confirmPassword;
+    private static final long serialVersionUID = 1L;
+
+    private String firstName;
+    private String lastName;
+    private String userName;
+    private String password;
+    private String confirmPassword;
     private String phoneNumber;
     private String userType;
 
     public User() {
     }
 
-    public User(String firstName, String lastName, String password, String confirmPassword, String phoneNumber, String userType) {
+    public User(String firstName, String lastName, String userName, String password, String confirmPassword, String phoneNumber, String userType) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
@@ -19,27 +25,31 @@ public class User implements Serializable {
         this.confirmPassword = confirmPassword;
         this.phoneNumber = phoneNumber;
         this.userType = userType;
+    }
 
-
+    public User(String userName, String password, String firstName, String lastName, String confirmPassword, String phoneNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userName = userName;
+        this.password = password;
+        this.confirmPassword = confirmPassword;
+        this.phoneNumber = phoneNumber;
+        this.userType = "Customer";
     }
 
     public String getFirstName() {
-
         return firstName;
     }
 
     public void setFirstName(String firstName) {
-
         this.firstName = firstName;
     }
 
     public String getLastName() {
-
         return lastName;
     }
 
     public void setLastName(String lastName) {
-
         this.lastName = lastName;
     }
 
@@ -52,27 +62,22 @@ public class User implements Serializable {
     }
 
     public String getPassword() {
-
         return password;
     }
 
     public void setPassword(String password) {
-
         this.password = password;
     }
 
     public String getConfirmPassword() {
-
         return confirmPassword;
     }
 
     public void setConfirmPassword(String confirmPassword) {
-
         this.confirmPassword = confirmPassword;
     }
 
     public String getPhoneNumber() {
-
         return phoneNumber;
     }
 
@@ -85,8 +90,14 @@ public class User implements Serializable {
     }
 
     public void setUserType(String userType) {
-
         this.userType = userType;
+    }
+
+    public String getFullName() {
+        String fn = (firstName != null) ? firstName : "";
+        String ln = (lastName != null) ? lastName : "";
+        String full = (fn + " " + ln).trim();
+        return full.isEmpty() ? userName : full;
     }
 
     @Override
@@ -95,24 +106,19 @@ public class User implements Serializable {
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", confirmPassword='" + confirmPassword + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", userType='" + userType + '\'' +
                 '}';
     }
 
     public static User VerifyUser(ArrayList<User> users, String userName, String password) {
-        User current_user = null;
-        for (User user : users){
-            if (user.getUserName().equals(userName)||user.getPassword().equals(password)){
-                current_user = user;
-                break;
+        if (users == null || userName == null || password == null) return null;
+        for (User user : users) {
+            if (user.getUserName() != null && user.getUserName().equalsIgnoreCase(userName) &&
+                user.getPassword() != null && user.getPassword().equals(password)) {
+                return user;
             }
         }
-      return current_user;
+        return null;
     }
-
-
 }
-
