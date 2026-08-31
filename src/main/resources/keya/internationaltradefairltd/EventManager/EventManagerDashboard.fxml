@@ -3,28 +3,80 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="841.0" style="-fx-background-color: #548581;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="keya.internationaltradefairltd.EventManager.EventManagerDashboardController">
+<AnchorPane prefHeight="650.0" prefWidth="950.0" styleClass="app-gradient-bg" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="keya.internationaltradefairltd.EventManager.EventManagerDashboardController">
    <children>
-      <Label layoutX="283.0" layoutY="46.0" prefHeight="39.0" prefWidth="226.0" text="Trade Fair System" textFill="WHITE">
-         <font>
-            <Font name="System Bold Italic" size="26.0" />
-         </font>
-      </Label>
-      <Label fx:id="userNameLabel" layoutX="618.0" layoutY="28.0" text="Welcome, Event Manager" textFill="WHITE" />
-      <Button fx:id="signOutButton" layoutX="760.0" layoutY="24.0" mnemonicParsing="false" onAction="#signOutBTOnAction" style="-fx-background-color: #0e534f;" text="Sign Out" textFill="WHITE" />
-      <Label layoutX="24.0" layoutY="93.0" text="Event Manager Dashboard" textFill="WHITE">
-         <font>
-            <Font name="System Bold Italic" size="14.0" />
-         </font>
-      </Label>
-      <Button layoutX="24.0" layoutY="130.0" mnemonicParsing="false" onAction="#eventVendorRegBTOnAction" text="Vendor Registration" />
-      <Button layoutX="24.0" layoutY="169.0" mnemonicParsing="false" onAction="#EventArrMTBTOnAction" prefHeight="26.0" prefWidth="122.0" text="Arrange Meeting" />
-      <Button layoutX="24.0" layoutY="208.0" mnemonicParsing="false" onAction="#eventRqstsBTOnAction" prefHeight="26.0" prefWidth="122.0" text="View All Requests" />
-      <Button layoutX="765.0" layoutY="512.0" mnemonicParsing="false" onAction="#eventMBKBTOnAction" prefHeight="26.0" prefWidth="62.0" text="Back" />
-      <Button layoutX="24.0" layoutY="248.0" mnemonicParsing="false" onAction="#eventAssignStallBTOnAction" prefHeight="26.0" prefWidth="122.0" text="Assign Stall" />
-      <Button layoutX="24.0" layoutY="289.0" mnemonicParsing="false" onAction="#reportsBTOnAction" prefHeight="26.0" prefWidth="122.0" text="Reports" />
-      <Button layoutX="24.0" layoutY="331.0" mnemonicParsing="false" onAction="#eventManagerFeedbackBTOnAction" prefHeight="26.0" prefWidth="122.0" text="FeedBackController" />
+      <!-- Top Navigation Header -->
+      <AnchorPane prefHeight="70.0" prefWidth="950.0" styleClass="glass-header">
+         <children>
+            <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="14.0" spacing="12.0">
+               <children>
+                  <Label styleClass="badge-pill" text="DITF 2026" />
+                  <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Event Manager Control Center" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="520.0" layoutY="16.0" spacing="15.0">
+               <children>
+                  <Label fx:id="userNameLabel" style="-fx-text-fill: #94a3b8; -fx-font-weight: bold; -fx-font-size: 13px;" text="Welcome, Event Manager" />
+                  <Button fx:id="signOutButton" mnemonicParsing="false" onAction="#signOutBTOnAction" styleClass="btn-danger" style="-fx-padding: 6px 14px; -fx-font-size: 11px;" text="Sign Out ⏻" />
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+
+      <!-- Main Dashboard Content -->
+      <VBox layoutX="40.0" layoutY="95.0" prefWidth="870.0" spacing="20.0">
+         <children>
+            <VBox spacing="4.0">
+               <children>
+                  <Label styleClass="title-section" text="Exhibition Operations &amp; Management Services" />
+                  <Label styleClass="subtitle-text" text="Select a module below to oversee registrations, booth allocations, meetings, and fair audits" />
+               </children>
+            </VBox>
+
+            <!-- 2x3 Grid of Feature Cards -->
+            <GridPane hgap="20.0" vgap="18.0">
+               <children>
+                  <!-- Card 1: Vendor Registration -->
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#eventVendorRegBTOnAction" prefHeight="90.0" styleClass="btn-nav-card" text="🏢  Vendor Registrations &amp; Allotments&#10;     Review, approve, and manage exhibition applicants" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+
+                  <!-- Card 2: Stall Allocation -->
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#eventAssignStallBTOnAction" prefHeight="90.0" styleClass="btn-nav-card" text="📍  Stall &amp; Pavilion Management&#10;     Create new booths, inspect availability, and allocate stalls" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                  <!-- Card 3: Arrange Meeting -->
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#EventArrMTBTOnAction" prefHeight="90.0" styleClass="btn-nav-card" text="📅  Coordination Meetings&#10;     Schedule and oversee multi-department stakeholder briefings" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+
+                  <!-- Card 4: Special Requests -->
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#eventRqstsBTOnAction" prefHeight="90.0" styleClass="btn-nav-card" text="⚡  Special Logistics Requests&#10;     Evaluate high-voltage power, water, and corner requests" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                  <!-- Card 5: View Reports -->
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#reportsBTOnAction" prefHeight="90.0" styleClass="btn-nav-card" text="📊  Trade Fair Reports &amp; Audits&#10;     Inspect gate ticket revenue, footfall, and safety evaluations" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+
+                  <!-- Card 6: Feedbacks -->
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#eventManagerFeedbackBTOnAction" prefHeight="90.0" styleClass="btn-nav-card" text="💬  Stakeholder &amp; Visitor Feedback&#10;     Browse reviews from vendors, visitors, advertisers, and investors" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               </children>
+               <columnConstraints>
+                  <javafx.scene.layout.ColumnConstraints percentWidth="50.0" />
+                  <javafx.scene.layout.ColumnConstraints percentWidth="50.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <javafx.scene.layout.RowConstraints prefHeight="90.0" />
+                  <javafx.scene.layout.RowConstraints prefHeight="90.0" />
+                  <javafx.scene.layout.RowConstraints prefHeight="90.0" />
+               </rowConstraints>
+            </GridPane>
+
+            <!-- Bottom Bar -->
+            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" style="-fx-padding: 10 0 0 0;">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#eventMBKBTOnAction" prefHeight="32.0" prefWidth="110.0" styleClass="btn-secondary" text="← Portal Home" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
