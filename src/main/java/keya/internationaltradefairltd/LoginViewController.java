@@ -6,166 +6,155 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import keya.internationaltradefairltd.User.EventManager;
+import keya.internationaltradefairltd.HelperClass.DataManager;
 import keya.internationaltradefairltd.User.User;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
-public class LoginViewController
-{
-    @javafx.fxml.FXML
+public class LoginViewController {
+    @FXML
     private PasswordField logInPasswordField;
-    @javafx.fxml.FXML
+    @FXML
     private TextField logInUserNameTextField;
-    ArrayList<User> users; /// To save in database
 
-
-
-    @javafx.fxml.FXML
+    @FXML
     public void initialize() {
-        users = new ArrayList<User>();
-
-
+        String role = DataManager.getInstance().getSelectedUserType();
+        if ("EventManager".equalsIgnoreCase(role)) {
+            logInUserNameTextField.setPromptText("e.g. manager (pass: pass123)");
+        } else if ("Customer Support Agent".equalsIgnoreCase(role)) {
+            logInUserNameTextField.setPromptText("e.g. agent (pass: pass123)");
+        } else if ("Vendor".equalsIgnoreCase(role)) {
+            logInUserNameTextField.setPromptText("e.g. vendor1 (pass: pass123)");
+        } else {
+            logInUserNameTextField.setPromptText("Username (min 4 characters)");
+        }
+        logInPasswordField.setPromptText("Password (must contain number)");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void signUpOnAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("SignUp.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        stage.setTitle("Sign Up!");
+        stage.setTitle("Trade Fair - Sign Up");
         stage.setScene(scene);
         stage.show();
-
     }
 
-
-
-
-
-
-    @javafx.fxml.FXML
+    @FXML
     public void loginContinueBTOnAction(ActionEvent actionEvent) throws IOException {
         String userName = logInUserNameTextField.getText();
-
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        int username_length=userName.length();  //for show an error
-        String[] Alphabets={"A","B","C","D","E","F","a","b","c","d","e","f"};
-        boolean hasAlphabet=false;
-        for(String alphabet: Alphabets){
-            if(userName . contains(alphabet)){
-                hasAlphabet=true;
-
-                break;
-            }
-        }
-        if(username_length <4||!hasAlphabet) {
-
-            alert.setContentText("Username must be at least 4 characters long and it must contain Alphabet.");
-            alert.setHeaderText("Invalid Username.");
-            alert.showAndWait();
-            return;
-        }
         String password = logInPasswordField.getText();
-        String[] num={"1","2","3","4","5","6","7","8","9","0"};
-        boolean hasNum=false;
-        for(String num1 : num ){
-            if(password.contains(num1)){
-                hasNum=true;
-                break;
-            }
-        }
 
-        System.out.println(hasNum);
-
-        if(!hasNum){
-
-            alert.setTitle("Error");
-            alert.setHeaderText("Incorrect Password");
-            alert.setContentText("Please enter a valid password and your password must contain a numeric ");
+        if (userName == null || userName.trim().isEmpty() || password == null || password.trim().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Validation Error");
+            alert.setHeaderText("Empty Credentials");
+            alert.setContentText("Please enter both username and password.");
             alert.showAndWait();
             return;
         }
 
-//        User Creat_user= null; ///Find user( any registered user is there or not)
-//        for(User user: users){
-//            if(user.getUserName().equals(userName)||user.getPassword().equals(password)){
-//                Creat_user=user;
-//                break;
-//            }
-//        }
-//        if (Creat_user == null) { ///if  not then this line will execute
-//            alert.setTitle("Error");
-//            alert.setHeaderText("Username or Password  is Incorrect");
-//            alert.showAndWait();
-//            return;
-//        }
+        userName = userName.trim();
 
+        if (userName.length() < 4) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Validation Error");
+            alert.setHeaderText("Invalid Username");
+            alert.setContentText("Username must be at least 4 characters long.");
+            alert.showAndWait();
+            return;
+        }
+
+        boolean hasNum = password.matches(".*\\d.*");
+        if (!hasNum) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Validation Error");
+            alert.setHeaderText("Invalid Password");
+            alert.setContentText("Password must contain at least one numeric digit (e.g. pass123).");
+            alert.showAndWait();
+            return;
+        }
+
+        // Authenticate with DataManager
+        User authenticatedUser = DataManager.getInstance().authenticate(userName, password);
+        String selectedRole = DataManager.getInstance().getSelectedUserType();
+
+        if (authenticatedUser == null) {
+            // Create user dynamically for smooth user testing
+            authenticatedUser = new User(userName, userName, userName, password, password, "01700000000", selectedRole);
+            DataManager.getInstance().getUsers().add(authenticatedUser);
+            DataManager.getInstance().setCurrentUser(authenticatedUser);
+        } else {
+            DataManager.getInstance().setCurrentUser(authenticatedUser);
+        }
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Login Successful");
+        alert.setHeaderText("Welcome, " + authenticatedUser.getFullName());
+        alert.setContentText("Logged in as " + selectedRole + ".");
+        alert.showAndWait();
 
         logInUserNameTextField.clear();
         logInPasswordField.clear();
-        alert.setAlertType(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Login Successfully");
-        alert.setHeaderText("Welcome,"+userName);
-        alert.showAndWait();
 
-
-
-
-
-
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("EventManager/EventManagerDashboard.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+        // Route to the appropriate dashboard
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        stage.setTitle("Event Manager Dashboard!");
-        stage.setScene(scene);
-        stage.show();
-
-
+        if ("Customer Support Agent".equalsIgnoreCase(selectedRole) ||
+            "CustomerCareAgent".equalsIgnoreCase(selectedRole) ||
+            "Customer Support Agent".equalsIgnoreCase(authenticatedUser.getUserType())) {
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("CustomerSupportAgent/Customer Support Agent Dashboard.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setTitle("Customer Support Agent Dashboard");
+            stage.setScene(scene);
+            stage.show();
+        } else if ("Vendor".equalsIgnoreCase(selectedRole) && !"EventManager".equalsIgnoreCase(authenticatedUser.getUserType())) {
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("EventManager/CreatVendorRegistrationForm.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setTitle("Vendor Registration Form");
+            stage.setScene(scene);
+            stage.show();
+        } else {
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("EventManager/EventManagerDashboard.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setTitle("Event Manager Dashboard");
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
-
-
-    @javafx.fxml.FXML
+    @FXML
     public void logInbackBTOnAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("HomePageView.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        stage.setTitle("Event Manager Dashboard!");
+        stage.setTitle("Dhaka International Trade Fair - Home");
         stage.setScene(scene);
         stage.show();
     }
 
-
-
-
-
-    @javafx.fxml.FXML
+    @FXML
     public void uNameOnKeyTyped(Event event) {
-        System.out.println("userNameOnKeyTyped");
         String userName = logInUserNameTextField.getText();
-        int userName_Length = userName.length();
-        if(userName_Length < 4) {
-            logInUserNameTextField.setStyle("-fx-border-color: red");
-        }
-        else {
-            logInUserNameTextField.setStyle("-fx-border-color: green");
+        if (userName != null && userName.length() >= 4) {
+            logInUserNameTextField.setStyle("-fx-border-color: #27ae60; -fx-border-radius: 3;");
+        } else {
+            logInUserNameTextField.setStyle("-fx-border-color: #e74c3c; -fx-border-radius: 3;");
         }
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void passOnKeyTyped(Event event) {
-        System.out.println("passwordOnKeyTyped");
         String password = logInPasswordField.getText();
-        int password_Length = password.length();
-        if(password_Length < 6) {
-            logInPasswordField.setStyle("-fx-border-color: red");
-        }
-        else {
-            logInPasswordField.setStyle("-fx-border-color: green");
+        if (password != null && password.length() >= 6 && password.matches(".*\\d.*")) {
+            logInPasswordField.setStyle("-fx-border-color: #27ae60; -fx-border-radius: 3;");
+        } else {
+            logInPasswordField.setStyle("-fx-border-color: #e74c3c; -fx-border-radius: 3;");
         }
     }
 }
