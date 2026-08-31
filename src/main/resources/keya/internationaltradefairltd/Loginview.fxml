@@ -5,48 +5,57 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="477.0" prefWidth="644.0" style="-fx-background-color: #548581;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="keya.internationaltradefairltd.LoginViewController">
+<AnchorPane prefHeight="580.0" prefWidth="800.0" styleClass="app-gradient-bg" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="keya.internationaltradefairltd.LoginViewController">
    <children>
-      <Label layoutX="187.0" layoutY="148.0" text="Welcome! Let's take you to your account." textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Label>
-      <Label layoutX="126.0" layoutY="63.0" text="Trade Fair System Login" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font name="System Bold Italic" size="33.0" />
-         </font>
-      </Label>
-      <Label layoutX="180.0" layoutY="184.0" text="User Name:*" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Label>
-      <TextField fx:id="logInUserNameTextField" layoutX="180.0" layoutY="208.0" onKeyTyped="#uNameOnKeyTyped" prefHeight="26.0" prefWidth="283.0" />
-      <Label layoutX="181.0" layoutY="243.0" text="Password:*" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Label>
-      <PasswordField fx:id="logInPasswordField" layoutX="181.0" layoutY="267.0" onKeyTyped="#passOnKeyTyped" prefHeight="26.0" prefWidth="281.0" />
-      <Button layoutX="181.0" layoutY="302.0" mnemonicParsing="false" onAction="#loginContinueBTOnAction" prefHeight="26.0" prefWidth="281.0" text="Continue">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Button>
-      <Label layoutX="181.0" layoutY="338.0" text="Don't have an account?" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Label>
-      <Button depthTest="ENABLE" layoutX="322.0" layoutY="338.0" mnemonicParsing="false" onAction="#signUpOnAction" style="-fx-background-color: transparent; -fx-padding: 0;" text="Sign Up" textFill="WHITE" underline="true">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Button>
-      <Button layoutX="561.0" layoutY="436.0" mnemonicParsing="false" onAction="#logInbackBTOnAction" prefHeight="26.0" prefWidth="62.0" text="Back">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Line endX="185.99996948242188" endY="-0.39998626708984375" layoutX="312.0" layoutY="113.0" startX="-186.00003051757812" startY="-0.39998626708984375" stroke="WHITE" />
-      <Label layoutX="251.0" layoutY="453.0" text="Trade Fair System 2025" textFill="WHITE" />
+      <VBox alignment="CENTER" layoutX="160.0" layoutY="45.0" prefHeight="490.0" prefWidth="480.0" spacing="18.0" styleClass="card-panel" style="-fx-padding: 30 35 30 35;">
+         <children>
+            <!-- Badge -->
+            <Label styleClass="badge-pill" text="SECURE ACCESS" />
+
+            <!-- Title -->
+            <VBox alignment="CENTER" spacing="4.0">
+               <children>
+                  <Label styleClass="title-hero" text="Account Sign In" textAlignment="CENTER" />
+                  <Label styleClass="subtitle-text" text="Enter your credentials to access your dashboard" textAlignment="CENTER" />
+               </children>
+            </VBox>
+
+            <!-- Form fields -->
+            <VBox prefWidth="410.0" spacing="12.0">
+               <children>
+                  <VBox spacing="5.0">
+                     <children>
+                        <Label style="-fx-text-fill: #cbd5e1; -fx-font-weight: bold; -fx-font-size: 12px;" text="Username *" />
+                        <TextField fx:id="logInUserNameTextField" onKeyTyped="#uNameOnKeyTyped" prefHeight="38.0" promptText="Enter your username" />
+                     </children>
+                  </VBox>
+                  <VBox spacing="5.0">
+                     <children>
+                        <Label style="-fx-text-fill: #cbd5e1; -fx-font-weight: bold; -fx-font-size: 12px;" text="Password *" />
+                        <PasswordField fx:id="logInPasswordField" onKeyTyped="#passOnKeyTyped" prefHeight="38.0" promptText="Enter your password" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+
+            <!-- Sign In Button -->
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loginContinueBTOnAction" prefHeight="40.0" style="-fx-font-size: 13px;" text="Sign In to Account →" />
+
+            <!-- Sign Up Link -->
+            <HBox alignment="CENTER" spacing="6.0">
+               <children>
+                  <Label style="-fx-text-fill: #94a3b8;" text="Don't have an account?" />
+                  <Button depthTest="ENABLE" mnemonicParsing="false" onAction="#signUpOnAction" style="-fx-background-color: transparent; -fx-padding: 0; -fx-text-fill: #2dd4bf; -fx-font-weight: bold;" text="Create Account" underline="true" />
+               </children>
+            </HBox>
+
+            <!-- Back Button -->
+            <Button mnemonicParsing="false" onAction="#logInbackBTOnAction" prefHeight="30.0" prefWidth="120.0" styleClass="btn-secondary" text="← Back to Portal" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
