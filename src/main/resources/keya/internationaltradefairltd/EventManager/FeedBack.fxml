@@ -4,29 +4,52 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="458.0" prefWidth="657.0" style="-fx-background-color: #548581;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="keya.internationaltradefairltd.EventManager.FeedBackController">
+<AnchorPane prefHeight="650.0" prefWidth="950.0" styleClass="app-gradient-bg" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="keya.internationaltradefairltd.EventManager.FeedBackController">
    <children>
-      <Label layoutX="112.0" layoutY="145.0" prefHeight="17.0" prefWidth="64.0" text="Usertype:" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="108.0" layoutY="182.0" prefHeight="18.0" prefWidth="72.0" text="User Name:" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="108.0" layoutY="229.0" prefHeight="18.0" prefWidth="90.0" text="FeedBack:" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="userNameLable" layoutX="221.0" layoutY="178.0" prefHeight="25.0" prefWidth="313.0" text="Label" textFill="WHITE" />
-      <Label fx:id="feedBackLabel" alignment="TOP_LEFT" layoutX="213.0" layoutY="229.0" prefHeight="115.0" prefWidth="393.0" text="Label" textFill="WHITE" />
-      <ComboBox fx:id="userTypeComboBox" layoutX="198.0" layoutY="141.0" prefWidth="150.0" />
-      <Button layoutX="573.0" layoutY="404.0" mnemonicParsing="false" onAction="#backBTOnAction" prefHeight="26.0" prefWidth="57.0" text="Back" />
+      <VBox alignment="CENTER" layoutX="175.0" layoutY="60.0" prefHeight="480.0" prefWidth="600.0" spacing="20.0" styleClass="card-panel" style="-fx-padding: 35 40 35 40;">
+         <children>
+            <!-- Badge & Header -->
+            <Label styleClass="badge-pill" text="VISITOR &amp; STAKEHOLDER REVIEWS" />
+            <VBox alignment="CENTER" spacing="3.0">
+               <children>
+                  <Label styleClass="title-hero" text="Trade Fair Feedback" />
+                  <Label styleClass="subtitle-text" text="Review authentic testimonials, vendor opinions, and visitor satisfaction" />
+               </children>
+            </VBox>
+
+            <!-- Filter Role -->
+            <HBox alignment="CENTER_LEFT" prefWidth="520.0" spacing="15.0">
+               <children>
+                  <Label style="-fx-text-fill: #cbd5e1; -fx-font-weight: bold; -fx-font-size: 13px;" text="Select Stakeholder Category:" />
+                  <ComboBox fx:id="userTypeComboBox" prefHeight="35.0" prefWidth="220.0" />
+               </children>
+            </HBox>
+
+            <!-- Feedback Display Card -->
+            <VBox prefWidth="520.0" spacing="10.0">
+               <children>
+                  <VBox spacing="4.0">
+                     <children>
+                        <Label style="-fx-text-fill: #94a3b8; -fx-font-weight: bold; -fx-font-size: 11px;" text="SUBMITTED BY:" />
+                        <Label fx:id="userNameLable" style="-fx-text-fill: #2dd4bf; -fx-font-size: 14px; -fx-font-weight: bold;" text="User Name &amp; Role" />
+                     </children>
+                  </VBox>
+                  <VBox spacing="4.0">
+                     <children>
+                        <Label style="-fx-text-fill: #94a3b8; -fx-font-weight: bold; -fx-font-size: 11px;" text="FEEDBACK STATEMENT:" />
+                        <Label fx:id="feedBackLabel" alignment="TOP_LEFT" prefHeight="130.0" prefWidth="520.0" style="-fx-background-color: #1e293b; -fx-background-radius: 8; -fx-padding: 15; -fx-text-fill: #f8fafc; -fx-font-size: 13px;" text="Feedback text will appear here..." wrapText="true" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+
+            <!-- Back Button -->
+            <Button mnemonicParsing="false" onAction="#backBTOnAction" prefHeight="32.0" prefWidth="120.0" styleClass="btn-secondary" text="← Dashboard" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
