@@ -1,6 +1,9 @@
 package keya.internationaltradefairltd.EventManager;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -8,162 +11,168 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import keya.internationaltradefairltd.HelloApplication;
+import keya.internationaltradefairltd.HelperClass.DataManager;
 import keya.internationaltradefairltd.HelperClass.Meeting;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 
-public class ArrangeMeetingViewController
-{
-    @javafx.fxml.FXML
-    private TableColumn<Meeting,String> participantTableColumn;
-    @javafx.fxml.FXML
+public class ArrangeMeetingViewController {
+    @FXML
+    private TableColumn<Meeting, String> participantTableColumn;
+    @FXML
     private TableColumn<Meeting, LocalDate> dateTableColumn;
-    @javafx.fxml.FXML
-    private TableColumn<Meeting,String> timeTableColumn;
-    @javafx.fxml.FXML
+    @FXML
+    private TableColumn<Meeting, String> timeTableColumn;
+    @FXML
     private TableView<Meeting> meetingTableView;
-    @javafx.fxml.FXML
+    @FXML
     private DatePicker meetingDatePicker1;
-    @javafx.fxml.FXML
+    @FXML
     private TableView<Meeting> viewMeetingTableView;
-    @javafx.fxml.FXML
-    private TableColumn<Meeting,String> VparticipantTableColumn;
-    @javafx.fxml.FXML
-    private TableColumn<Meeting,String> vTimeTableColumn;
-    @javafx.fxml.FXML
-    private TableColumn<Meeting,LocalDate> vDateTableColumn;
-    @javafx.fxml.FXML
+    @FXML
+    private TableColumn<Meeting, String> VparticipantTableColumn;
+    @FXML
+    private TableColumn<Meeting, String> vTimeTableColumn;
+    @FXML
+    private TableColumn<Meeting, LocalDate> vDateTableColumn;
+    @FXML
     private TextField meetingTimeTextField1;
-    @javafx.fxml.FXML
+    @FXML
     private TabPane mainTab;
-    @javafx.fxml.FXML
+    @FXML
     private Tab viewMeetingTab;
-    @javafx.fxml.FXML
+    @FXML
     private Tab scheduleMeetingTab;
-    @javafx.fxml.FXML
+    @FXML
     private ComboBox<String> participantComboBox;
-    @javafx.fxml.FXML
+    @FXML
     private ComboBox<String> filteredParticipantComboBox;
-    ArrayList<Meeting> meetings;
 
-    @javafx.fxml.FXML
+    @FXML
     public void initialize() {
-        meetings = new ArrayList<>();
-        participantComboBox.getItems().addAll("EventManager","Admin","Quality Controller","Customer Support Agent");
+        participantComboBox.getItems().setAll("EventManager", "Admin", "Quality Controller", "Customer Support Agent", "All Participants");
+        participantComboBox.setValue("Admin");
+
+        filteredParticipantComboBox.getItems().setAll("All", "EventManager", "Admin", "Quality Controller", "Customer Support Agent");
+        filteredParticipantComboBox.setValue("All");
+
         participantTableColumn.setCellValueFactory(new PropertyValueFactory<>("participant"));
         dateTableColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         timeTableColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
+
         VparticipantTableColumn.setCellValueFactory(new PropertyValueFactory<>("participant"));
         vTimeTableColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
         vDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+        meetingDatePicker1.setValue(LocalDate.now().plusDays(1));
+        meetingTimeTextField1.setPromptText("e.g. 10:30 AM");
+
+        refreshMeetingTables();
     }
 
-    @javafx.fxml.FXML
+    private void refreshMeetingTables() {
+        ObservableList<Meeting> allMeetings = DataManager.getInstance().getMeetings();
+        meetingTableView.setItems(allMeetings);
+        viewMeetingTableView.setItems(allMeetings);
+    }
+
+    @FXML
     public void createMeetingBTOnAction(ActionEvent actionEvent) {
         String participant = participantComboBox.getValue();
         String time = meetingTimeTextField1.getText();
         LocalDate date = meetingDatePicker1.getValue();
 
-        if(participant==null||participant.isEmpty()||time==null||time.isEmpty()||date==null) {
+        if (participant == null || participant.trim().isEmpty() || time == null || time.trim().isEmpty() || date == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Please fill all the fields");
-            alert.showAndWait();
-            return;
-        }
-        if(date.isBefore(LocalDate.now())) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Date cannot be past");
+            alert.setHeaderText("Incomplete Meeting Details");
+            alert.setContentText("Please select participant, enter time, and pick a date.");
             alert.showAndWait();
             return;
         }
 
-        Meeting meeting = new Meeting(participant,time,date);
-        meetings.add(meeting);
-        filteredParticipantComboBox.getItems().addAll(participant);
+        if (date.isBefore(LocalDate.now())) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Invalid Date");
+            alert.setHeaderText(null);
+            alert.setContentText("Meeting date cannot be in the past.");
+            alert.showAndWait();
+            return;
+        }
+
+        Meeting meeting = new Meeting(participant, time.trim(), date);
+        DataManager.getInstance().getMeetings().add(meeting);
+        refreshMeetingTables();
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Info");
+        alert.setTitle("Meeting Created");
         alert.setHeaderText(null);
-        alert.setContentText("Meeting created successfully");
+        alert.setContentText("Meeting with " + participant + " scheduled on " + date + " at " + time + ".");
         alert.showAndWait();
 
         meetingTimeTextField1.clear();
-        meetingDatePicker1.setValue(null);
-
-
-
-
-
-
+        meetingDatePicker1.setValue(LocalDate.now().plusDays(1));
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void deleteMeetingBTOnAction(ActionEvent actionEvent) {
-        Meeting selected_meeting = meetingTableView.getSelectionModel().getSelectedItem();
-        if(selected_meeting!=null) {
-            meetingTableView.getItems().remove(selected_meeting);
-
+        Meeting selectedMeeting = meetingTableView.getSelectionModel().getSelectedItem();
+        if (selectedMeeting == null) {
+            selectedMeeting = viewMeetingTableView.getSelectionModel().getSelectedItem();
         }
-        else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
+
+        if (selectedMeeting != null) {
+            DataManager.getInstance().getMeetings().remove(selectedMeeting);
+            refreshMeetingTables();
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Meeting Removed");
             alert.setHeaderText(null);
-            alert.setContentText("No meeting selected");
+            alert.setContentText("Selected meeting has been successfully deleted.");
             alert.showAndWait();
-            return;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Selection Warning");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select a meeting from the table to delete.");
+            alert.showAndWait();
         }
     }
 
-
-    @javafx.fxml.FXML
+    @FXML
     public void updateBTOnAction(ActionEvent actionEvent) {
-        String participant = filteredParticipantComboBox.getValue();
-        for(Meeting meeting : meetings) {
-            if(meeting.getParticipant().equals(participant)) {
-                meetingTableView.getItems().setAll(meetings);
-                return;
-
+        String filter = filteredParticipantComboBox.getValue();
+        if (filter == null || "All".equalsIgnoreCase(filter)) {
+            meetingTableView.setItems(DataManager.getInstance().getMeetings());
+        } else {
+            ObservableList<Meeting> filtered = FXCollections.observableArrayList();
+            for (Meeting m : DataManager.getInstance().getMeetings()) {
+                if (m.getParticipant() != null && m.getParticipant().equalsIgnoreCase(filter)) {
+                    filtered.add(m);
+                }
             }
-            else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText(null);
-                alert.setContentText("Participant does not match");
-                alert.showAndWait();
-                return;
-
-            }
+            meetingTableView.setItems(filtered);
         }
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void viewMeetingBTOnAction(ActionEvent actionEvent) {
-        SingleSelectionModel<Tab> singleSelectionModel = mainTab.getSelectionModel();///to switch one tab to another
-        singleSelectionModel.select(viewMeetingTab);
-        viewMeetingTableView.getItems().setAll(meetingTableView.getItems());
+        mainTab.getSelectionModel().select(viewMeetingTab);
+        viewMeetingTableView.setItems(DataManager.getInstance().getMeetings());
     }
 
-
-
-    @javafx.fxml.FXML
+    @FXML
     public void vMeetingBackBTOnAction(ActionEvent actionEvent) {
-        SingleSelectionModel<Tab> singleSelectionModel = mainTab.getSelectionModel();///to switch one tab to another
-        singleSelectionModel.select(scheduleMeetingTab);
-
+        mainTab.getSelectionModel().select(scheduleMeetingTab);
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void sMeetingbackBTOnAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("EventManager/EventManagerDashboard.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        stage.setTitle("Log In!");
+        stage.setTitle("Event Manager Dashboard");
         stage.setScene(scene);
         stage.show();
     }
