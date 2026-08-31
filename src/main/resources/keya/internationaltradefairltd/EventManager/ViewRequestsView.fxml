@@ -5,36 +5,50 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="530.0" prefWidth="787.0" style="-fx-background-color: #548581;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="keya.internationaltradefairltd.EventManager.ViewRequestsViewController">
+<AnchorPane prefHeight="650.0" prefWidth="950.0" styleClass="app-gradient-bg" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="keya.internationaltradefairltd.EventManager.ViewRequestsViewController">
    <children>
-      <Label alignment="CENTER" layoutX="240.0" layoutY="20.0" prefHeight="35.0" prefWidth="320.0" text="Vendor Special Requests" textFill="WHITE">
-         <font>
-            <Font name="System Bold Italic" size="22.0" />
-         </font>
-      </Label>
-      <Label layoutX="172.0" layoutY="68.0" text="Select Vendor / Organization:" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <ComboBox fx:id="vendorComboBox" layoutX="360.0" layoutY="64.0" prefHeight="26.0" prefWidth="302.0" promptText="Select Vendor" />
-      <TextArea fx:id="requestsDetailesTextField" editable="false" layoutX="172.0" layoutY="102.0" prefHeight="200.0" prefWidth="490.0" wrapText="true" />
-      <Button fx:id="approveBT" layoutX="172.0" layoutY="318.0" mnemonicParsing="false" onAction="#rqstApproveBTOnAction" prefHeight="32.0" prefWidth="490.0" style="-fx-background-color: #27ae60;" text="Approve Special Request" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button fx:id="rejectBT" layoutX="172.0" layoutY="360.0" mnemonicParsing="false" onAction="#rqstRejectBTOnAction" prefHeight="32.0" prefWidth="490.0" style="-fx-background-color: #c0392b;" text="Reject Special Request" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="680.0" layoutY="470.0" mnemonicParsing="false" onAction="#rDetlbackBTOnAction" prefHeight="30.0" prefWidth="75.0" text="Back">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
+      <VBox alignment="CENTER" layoutX="140.0" layoutY="35.0" prefHeight="570.0" prefWidth="670.0" spacing="18.0" styleClass="card-panel" style="-fx-padding: 30 35 30 35;">
+         <children>
+            <!-- Badge & Header -->
+            <Label styleClass="badge-pill" text="LOGISTICS &amp; SPECIAL PROVISIONS" />
+            <VBox alignment="CENTER" spacing="3.0">
+               <children>
+                  <Label styleClass="title-hero" text="Vendor Special Requests" />
+                  <Label styleClass="subtitle-text" text="Review high-voltage power, water drainage, and corner spot allotment requests" />
+               </children>
+            </VBox>
+
+            <!-- Vendor Dropdown -->
+            <VBox prefWidth="600.0" spacing="5.0">
+               <children>
+                  <Label style="-fx-text-fill: #cbd5e1; -fx-font-weight: bold; -fx-font-size: 12px;" text="Select Exhibitor Organization:" />
+                  <ComboBox fx:id="vendorComboBox" maxWidth="1.7976931348623157E308" prefHeight="38.0" promptText="Choose Vendor to Inspect" />
+               </children>
+            </VBox>
+
+            <!-- Request Details Box -->
+            <VBox prefWidth="600.0" spacing="5.0">
+               <children>
+                  <Label style="-fx-text-fill: #cbd5e1; -fx-font-weight: bold; -fx-font-size: 12px;" text="Request Details &amp; Technical Specifications:" />
+                  <TextArea fx:id="requestsDetailesTextField" editable="false" prefHeight="170.0" promptText="Logistics specifications will appear here..." wrapText="true" />
+               </children>
+            </VBox>
+
+            <!-- Action Buttons -->
+            <HBox alignment="CENTER" spacing="15.0">
+               <children>
+                  <Button fx:id="approveBT" mnemonicParsing="false" onAction="#rqstApproveBTOnAction" prefHeight="38.0" prefWidth="220.0" styleClass="btn-success" text="✓ Approve Logistics Request" />
+                  <Button fx:id="rejectBT" mnemonicParsing="false" onAction="#rqstRejectBTOnAction" prefHeight="38.0" prefWidth="200.0" styleClass="btn-danger" text="✕ Reject Request" />
+               </children>
+            </HBox>
+
+            <!-- Back Button -->
+            <Button mnemonicParsing="false" onAction="#rDetlbackBTOnAction" prefHeight="30.0" prefWidth="100.0" styleClass="btn-secondary" text="← Dashboard" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
