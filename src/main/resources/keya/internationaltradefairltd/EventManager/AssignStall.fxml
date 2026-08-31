@@ -16,84 +16,124 @@
    <children>
       <TabPane fx:id="MainTab" layoutX="-4.0" layoutY="-1.0" prefHeight="622.0" prefWidth="921.0" style="-fx-background-color: #548581;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Assign Stall">
+          <Tab fx:id="assignStallTab" text="Assign Stall">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="339.0" layoutY="203.0" mnemonicParsing="false" onAction="#ViewAvailableBTOnAction" prefHeight="65.0" prefWidth="176.0" text="View Available Stalls to Assign" />
-                        <Label layoutX="303.0" layoutY="51.0" prefHeight="39.0" prefWidth="226.0" text="Trade Fair System" textFill="WHITE">
+                        <Button layoutX="339.0" layoutY="203.0" mnemonicParsing="false" onAction="#ViewAvailableBTOnAction" prefHeight="65.0" prefWidth="240.0" text="View Available Stalls to Assign">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <Label alignment="CENTER" layoutX="263.0" layoutY="51.0" prefHeight="39.0" prefWidth="395.0" text="Trade Fair Stall Management" textFill="WHITE">
                            <font>
                               <Font name="System Bold Italic" size="26.0" />
                            </font>
                         </Label>
-                        <Button layoutX="356.0" layoutY="131.0" mnemonicParsing="false" onAction="#creatAndShowBTOnAction" prefHeight="61.0" prefWidth="142.0" text="Creat and show detailes" />
-                        <Button layoutX="849.0" layoutY="553.0" mnemonicParsing="false" onAction="#assignStallBackButtonOnAction" prefHeight="26.0" prefWidth="58.0" text="Back" />
+                        <Button layoutX="339.0" layoutY="125.0" mnemonicParsing="false" onAction="#creatAndShowBTOnAction" prefHeight="61.0" prefWidth="240.0" text="Create and Show Details">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="830.0" layoutY="540.0" mnemonicParsing="false" onAction="#assignStallBackButtonOnAction" prefHeight="30.0" prefWidth="75.0" text="Back">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Create and Detailes">
+            <Tab fx:id="createDetailsTab" text="Create and Details">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="334.0" layoutY="183.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="210.0" text="Create Stall" />
-                        <TextField fx:id="stallIDTextField" layoutX="221.0" layoutY="83.0" promptText="Stall Id" />
-                        <TextField fx:id="stallLocationTextField" layoutX="446.0" layoutY="83.0" promptText="Stall locatopn" />
-                        <TextField fx:id="stallSizeTextField" layoutX="228.0" layoutY="146.0" promptText="Stall Size" />
-                        <TextField fx:id="rentTextField" layoutX="456.0" layoutY="146.0" promptText="Per Day Rent" />
-                        <Button layoutX="48.0" layoutY="320.0" mnemonicParsing="false" onAction="#showDTBTOnAction" prefHeight="26.0" prefWidth="143.0" text="Show Detailes" />
-                        <TableView fx:id="stallsTableView" layoutX="201.0" layoutY="280.0" prefHeight="154.0" prefWidth="518.0">
+                        <Button layoutX="334.0" layoutY="183.0" mnemonicParsing="false" onAction="#createStallBTOnAction" prefHeight="32.0" prefWidth="210.0" text="Create Stall">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="stallIDTextField" layoutX="221.0" layoutY="83.0" prefHeight="30.0" prefWidth="180.0" promptText="Stall ID (e.g. ST-205)" />
+                        <TextField fx:id="stallLocationTextField" layoutX="446.0" layoutY="83.0" prefHeight="30.0" prefWidth="240.0" promptText="Stall Location (e.g. Hall C)" />
+                        <TextField fx:id="stallSizeTextField" layoutX="221.0" layoutY="135.0" prefHeight="30.0" prefWidth="180.0" promptText="Stall Size (sq ft)" />
+                        <TextField fx:id="rentTextField" layoutX="446.0" layoutY="135.0" prefHeight="30.0" prefWidth="240.0" promptText="Per Day Rent (BDT)" />
+                        <Button layoutX="41.0" layoutY="320.0" mnemonicParsing="false" onAction="#showDTBTOnAction" prefHeight="30.0" prefWidth="150.0" text="Show Details">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <TableView fx:id="stallsTableView" layoutX="201.0" layoutY="280.0" prefHeight="240.0" prefWidth="680.0">
                            <columns>
-                              <TableColumn fx:id="stallIDTableColumn" prefWidth="107.20001220703125" text="Stall Id" />
-                              <TableColumn fx:id="stallSizeTableColumn" prefWidth="119.20001220703125" text="Stall Size(sqr ft.)" />
-                              <TableColumn fx:id="stallLocationTableColumn" prefWidth="152.0" text="Stall Location" />
-                              <TableColumn fx:id="rentTableColumn" prefWidth="141.5999755859375" text="Rent(tk)" />
+                              <TableColumn fx:id="stallIDTableColumn" prefWidth="120.0" text="Stall ID" />
+                              <TableColumn fx:id="stallSizeTableColumn" prefWidth="140.0" text="Stall Size (sq ft)" />
+                              <TableColumn fx:id="stallLocationTableColumn" prefWidth="240.0" text="Stall Location" />
+                              <TableColumn fx:id="rentTableColumn" prefWidth="175.0" text="Rent (BDT)" />
                            </columns>
                         </TableView>
-                        <Button layoutX="845.0" layoutY="553.0" mnemonicParsing="false" onAction="#creatAndDetBackBTOnAction" prefHeight="26.0" prefWidth="62.0" text="Back" />
-                        <Label alignment="CENTER" layoutX="356.0" layoutY="32.0" prefHeight="18.0" prefWidth="89.0" text="Creat Stall" textFill="WHITE">
+                        <Button layoutX="825.0" layoutY="540.0" mnemonicParsing="false" onAction="#creatAndDetBackBTOnAction" prefHeight="30.0" prefWidth="75.0" text="Back">
                            <font>
-                              <Font name="System Bold Italic" size="17.0" />
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Label alignment="CENTER" layoutX="356.0" layoutY="32.0" prefHeight="26.0" prefWidth="180.0" text="Create New Stall" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold Italic" size="18.0" />
                            </font>
                         </Label>
                         <Line endX="522.7999267578125" endY="-1.52587890625E-5" layoutX="322.0" layoutY="236.0" startX="-302.79998779296875" startY="-1.52587890625E-5" stroke="WHITE" />
-                        <ComboBox fx:id="stallIdComboBox" layoutX="41.0" layoutY="280.0" prefWidth="150.0" promptText="Stall Id" />
+                        <ComboBox fx:id="stallIdComboBox" layoutX="41.0" layoutY="280.0" prefHeight="30.0" prefWidth="150.0" promptText="Select Stall ID" />
                      </children>
                   </AnchorPane>
                </content>
             </Tab>
-          <Tab text="Viwe Available Stalls To Assign">
+          <Tab fx:id="availableStallsTab" text="View Available Stalls To Assign">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="572.0" prefWidth="847.0">
                      <children>
-                        <Button layoutX="34.0" layoutY="27.0" mnemonicParsing="false" onAction="#availableStallBTOnAction" prefHeight="26.0" prefWidth="143.0" text="Available Stall" />
-                        <TableView fx:id="availableStallTableView" layoutX="219.0" layoutY="14.0" prefHeight="118.0" prefWidth="518.0">
+                        <Button layoutX="34.0" layoutY="27.0" mnemonicParsing="false" onAction="#availableStallBTOnAction" prefHeight="35.0" prefWidth="160.0" text="Load Available Stalls">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <TableView fx:id="availableStallTableView" layoutX="219.0" layoutY="14.0" prefHeight="130.0" prefWidth="660.0">
                           <columns>
-                            <TableColumn fx:id="availableStallIdTavleColumn" prefWidth="107.20001220703125" text="Stall Id" />
-                            <TableColumn fx:id="availStallSizeTableColumn" prefWidth="119.20001220703125" text="Stall Size(Sqr ft.)" />
-                              <TableColumn fx:id="availableStallSizeTableColumn" prefWidth="152.0" text="Stall Location" />
-                              <TableColumn fx:id="availavleRentTableColumn" prefWidth="141.5999755859375" text="Rent(tk)" />
+                            <TableColumn fx:id="availableStallIdTavleColumn" prefWidth="120.0" text="Stall ID" />
+                            <TableColumn fx:id="availStallSizeTableColumn" prefWidth="140.0" text="Stall Size (sq ft)" />
+                              <TableColumn fx:id="availableStallSizeTableColumn" prefWidth="220.0" text="Stall Location" />
+                              <TableColumn fx:id="availavleRentTableColumn" prefWidth="175.0" text="Rent (BDT)" />
                           </columns>
                         </TableView>
-                        <Button layoutX="836.0" layoutY="553.0" mnemonicParsing="false" onAction="#availableAndAssignBackBTOnAction" prefHeight="26.0" prefWidth="71.0" text="Back" />
-                        <TextField fx:id="enterStallIDTextField" layoutX="34.0" layoutY="434.0" promptText="Enter Stall Id" />
-                        <Button layoutX="37.0" layoutY="479.0" mnemonicParsing="false" onAction="#assignBTOnAction" prefHeight="26.0" prefWidth="143.0" text="Assign" />
-                        <TableView fx:id="assignStallTableView" layoutX="197.0" layoutY="383.0" prefHeight="154.0" prefWidth="667.0">
+                        <Button layoutX="825.0" layoutY="540.0" mnemonicParsing="false" onAction="#availableAndAssignBackBTOnAction" prefHeight="30.0" prefWidth="75.0" text="Back">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="enterStallIDTextField" layoutX="34.0" layoutY="410.0" prefHeight="30.0" prefWidth="160.0" promptText="Enter Stall ID" />
+                        <Button layoutX="34.0" layoutY="455.0" mnemonicParsing="false" onAction="#assignBTOnAction" prefHeight="35.0" prefWidth="160.0" style="-fx-background-color: #27ae60;" text="Assign Stall" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <TableView fx:id="assignStallTableView" layoutX="219.0" layoutY="340.0" prefHeight="180.0" prefWidth="660.0">
                            <columns>
-                              <TableColumn fx:id="assignCompTableColumn" prefWidth="122.4000244140625" text="Company Name" />
-                              <TableColumn fx:id="assignstallIDTableColumn" prefWidth="128.79998779296875" text="Stall Id" />
-                              <TableColumn fx:id="assignStallSizeTableColumn" prefWidth="131.99996948242188" text="Stall Size(sqr ft.)" />
-                              <TableColumn fx:id="assignStallLocationTableColumn" prefWidth="163.199951171875" text="Stall Location" />
-                              <TableColumn fx:id="assignRentTableColumn" prefWidth="145.5999755859375" text="Rent(tk)" />
+                              <TableColumn fx:id="assignCompTableColumn" prefWidth="170.0" text="Company Name" />
+                              <TableColumn fx:id="assignstallIDTableColumn" prefWidth="110.0" text="Stall ID" />
+                              <TableColumn fx:id="assignStallSizeTableColumn" prefWidth="110.0" text="Size (sq ft)" />
+                              <TableColumn fx:id="assignStallLocationTableColumn" prefWidth="150.0" text="Location" />
+                              <TableColumn fx:id="assignRentTableColumn" prefWidth="115.0" text="Rent (BDT)" />
                            </columns>
                         </TableView>
-                        <TextField fx:id="enterCompanyNameTextField" layoutX="37.0" layoutY="398.0" promptText="Enter Company Name" />
-                        <TableView fx:id="approvedCompanyTableView" layoutX="218.0" layoutY="165.0" prefHeight="156.0" prefWidth="526.0">
+                        <TextField fx:id="enterCompanyNameTextField" layoutX="34.0" layoutY="365.0" prefHeight="30.0" prefWidth="160.0" promptText="Enter Company Name" />
+                        <TableView fx:id="approvedCompanyTableView" layoutX="219.0" layoutY="160.0" prefHeight="160.0" prefWidth="660.0">
                           <columns>
-                            <TableColumn fx:id="showApprovedCompantTableColumn" prefWidth="549.6000122070312" text="Approved Company Name" />
+                            <TableColumn fx:id="showApprovedCompantTableColumn" prefWidth="655.0" text="Approved Companies Eligible for Stall Assignment" />
                           </columns>
                         </TableView>
-                        <Button layoutX="34.0" layoutY="223.0" mnemonicParsing="false" onAction="#showCompanyBTOnAction" prefHeight="26.0" prefWidth="167.0" text="Show Approved Company" />
+                        <Button layoutX="34.0" layoutY="190.0" mnemonicParsing="false" onAction="#showCompanyBTOnAction" prefHeight="35.0" prefWidth="160.0" text="Show Approved Vendors">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
             </content>
