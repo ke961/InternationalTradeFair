@@ -9,277 +9,196 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import keya.internationaltradefairltd.HelperClass.DataManager;
 import keya.internationaltradefairltd.User.User;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
-public class SignUpController
-{
-
-    @javafx.fxml.FXML
+public class SignUpController {
+    @FXML
     private TextField signUpPhoneNumberTextField;
-    @javafx.fxml.FXML
+    @FXML
     private TextField signUpFirstNameTextField;
-    @javafx.fxml.FXML
+    @FXML
     private TextField signUpUserNameTextField;
-    @javafx.fxml.FXML
+    @FXML
     private TextField signUpPasswordTextField;
-    @javafx.fxml.FXML
+    @FXML
     private TextField signUpLastNameTextField;
-    @javafx.fxml.FXML
+    @FXML
     private TextField signUpConfirmPasswordTextField;
-    ArrayList<User> user ;
 
-    boolean hasUpdateusername = false;  /// to suggest first name on user text field
+    private boolean hasUpdateusername = false;
 
-
-
-
-    @javafx.fxml.FXML
+    @FXML
     public void initialize() {
-        user = new ArrayList<User>();
-
+        signUpFirstNameTextField.setPromptText("First Name");
+        signUpLastNameTextField.setPromptText("Last Name");
+        signUpUserNameTextField.setPromptText("Username (min 4 chars)");
+        signUpPhoneNumberTextField.setPromptText("Phone Number (11 digits)");
+        signUpPasswordTextField.setPromptText("Password (min 6 chars, with number)");
+        signUpConfirmPasswordTextField.setPromptText("Confirm Password");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void logInBTOnAction(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("LoginView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Loginview.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        stage.setTitle("Log In!");
+        stage.setTitle("Login");
         stage.setScene(scene);
         stage.show();
     }
 
-    @Deprecated
-    public void backBTOnAction(ActionEvent actionEvent) {
-    }
-
-    @javafx.fxml.FXML
+    @FXML
     public void creatAccountBTOnAction(ActionEvent actionEvent) throws IOException {
-        String userName = signUpUserNameTextField.getText();
+        String firstName = signUpFirstNameTextField.getText() != null ? signUpFirstNameTextField.getText().trim() : "";
+        String lastName = signUpLastNameTextField.getText() != null ? signUpLastNameTextField.getText().trim() : "";
+        String userName = signUpUserNameTextField.getText() != null ? signUpUserNameTextField.getText().trim() : "";
+        String password = signUpPasswordTextField.getText() != null ? signUpPasswordTextField.getText() : "";
+        String confirmPassword = signUpConfirmPasswordTextField.getText() != null ? signUpConfirmPasswordTextField.getText() : "";
+        String phoneNumber = signUpPhoneNumberTextField.getText() != null ? signUpPhoneNumberTextField.getText().trim() : "";
 
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        String[] Alphabets={"A","B","C","D","E","F","a","b","c","d","e","f"};
-        boolean hasAlphabet=false;
-        for(String alphabet: Alphabets){
-            if(userName . contains(alphabet)){
-                hasAlphabet=true;
 
-                break;
-            }
-        }
-        if(!hasAlphabet){
-
-            alert.setTitle("Error");
-            alert.setHeaderText("Invalid Username ");
-            alert.setContentText("Please enter a valid username and your username must contain a Alphabet ");
+        if (firstName.isEmpty() || lastName.isEmpty() || userName.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || phoneNumber.isEmpty()) {
+            alert.setTitle("Registration Error");
+            alert.setHeaderText("Missing Information");
+            alert.setContentText("Please fill out all required fields.");
             alert.showAndWait();
             return;
         }
-        System.out.println(hasAlphabet);
 
-
-        String password = signUpPasswordTextField.getText();
-        String[] num={"1","2","3","4","5","6","7","8","9","0"};
-
-
-        boolean hasNum=false;
-        for(String num1 : num ) {
-            if (password.contains(num1)) {
-                hasNum = true;
-
-                break;
-            }
-        }
-        System.out.println(hasNum);
-
-        if (!hasNum){
-
-            alert.setTitle("Error");
-            alert.setHeaderText("Incorrect Password");
-            alert.setContentText("Please enter a valid password and your password must contain a numeric ");
-            alert.showAndWait();
-            return;
-
-        }
-
-        String firstName = signUpFirstNameTextField.getText();
-        String lastName = signUpLastNameTextField.getText();
-        String confirmPassword = signUpConfirmPasswordTextField.getText();
-        boolean is_validCred=this.validatePasswordAndConfirmPassword(password,confirmPassword);
-        if(!is_validCred ){
-            alert.setTitle("Error");
-            alert.setHeaderText("Your Password and Confirm Password do not match");
+        if (userName.length() < 4) {
+            alert.setTitle("Registration Error");
+            alert.setHeaderText("Invalid Username");
+            alert.setContentText("Username must be at least 4 characters long.");
             alert.showAndWait();
             return;
         }
-        System.out.println("Passwords match! Proceeding...");
-        String phoneNumber = signUpPhoneNumberTextField.getText();
-        int phoneNumber_length=phoneNumber.length();
-        String[] N= {"0", "1", "2","3","4","5","6","7","8","9"};
 
-        boolean hasN=false;
-        for(String Num : N ) {
-            if (phoneNumber.contains(Num)||phoneNumber_length<11) {
-                hasN=true;
-                break;
-            }
-
+        if (password.length() < 6 || !password.matches(".*\\d.*")) {
+            alert.setTitle("Registration Error");
+            alert.setHeaderText("Weak Password");
+            alert.setContentText("Password must be at least 6 characters and contain at least one numeric digit.");
+            alert.showAndWait();
+            return;
         }
-        if(!hasN){
-            alert.setTitle("Error");
+
+        if (!password.equals(confirmPassword)) {
+            alert.setTitle("Registration Error");
+            alert.setHeaderText("Password Mismatch");
+            alert.setContentText("Password and Confirm Password do not match.");
+            alert.showAndWait();
+            return;
+        }
+
+        if (phoneNumber.length() < 11 || !phoneNumber.matches("\\d+")) {
+            alert.setTitle("Registration Error");
             alert.setHeaderText("Invalid Phone Number");
-            alert.setHeaderText( "Please enter a valid phone number ");
-            alert.setContentText("your phone number must contain a numeric and it must be 11 digits");
+            alert.setContentText("Phone number must be at least 11 digits.");
             alert.showAndWait();
+            return;
         }
 
-        for (User user : user) {    /// this line is to check if there is any same user is there or not
-            if (user.getUserName().equals(userName)||user.getPassword().equals(password)) {
-                alert.setTitle("Error");
-                alert.setHeaderText("Invalid Username and Password");
-                alert.setContentText(" This Username and password is Already Exist");
+        // Check if username already exists
+        for (User u : DataManager.getInstance().getUsers()) {
+            if (u.getUserName() != null && u.getUserName().equalsIgnoreCase(userName)) {
+                alert.setTitle("Registration Error");
+                alert.setHeaderText("User Already Exists");
+                alert.setContentText("A user with this username already exists. Please choose a different one.");
                 alert.showAndWait();
-                break;
+                return;
             }
         }
-        User new_user= new User(userName,password,firstName,lastName,confirmPassword,phoneNumber);/// if there is not then this line will execute
-        user.add(new_user);
 
-
-
+        String userType = DataManager.getInstance().getSelectedUserType();
+        User newUser = new User(firstName, lastName, userName, password, confirmPassword, phoneNumber, userType);
+        DataManager.getInstance().getUsers().add(newUser);
+        DataManager.getInstance().setCurrentUser(newUser);
 
         signUpFirstNameTextField.clear();
         signUpLastNameTextField.clear();
         signUpUserNameTextField.clear();
-        signUpConfirmPasswordTextField.clear();
+        signUpPasswordTextField.clear();
         signUpConfirmPasswordTextField.clear();
         signUpPhoneNumberTextField.clear();
 
-        alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Registration Successfully");
-        alert.setHeaderText("Welcome ,"  +firstName + " " + lastName);
-        alert.showAndWait();
+        Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+        successAlert.setTitle("Registration Successful");
+        successAlert.setHeaderText("Welcome, " + firstName + " " + lastName);
+        successAlert.setContentText("Your account has been created successfully! Redirecting to login...");
+        successAlert.showAndWait();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("LoginView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Loginview.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        stage.setTitle("Log In!");
+        stage.setTitle("Login");
         stage.setScene(scene);
         stage.show();
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
-    private boolean validatePasswordAndConfirmPassword(String password, String confirmPassword) {
-        if(password==null || confirmPassword==null){
-            return false;
-        }
-        if(!password.equals(confirmPassword)){
-            return false;
-
-        }
-
-        return true;
-    }
-
-
-
-    @javafx.fxml.FXML
+    @FXML
     public void signUpbackBTOnAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("HomePageView.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        stage.setTitle("Home Page!");
+        stage.setTitle("Dhaka International Trade Fair - Home");
         stage.setScene(scene);
         stage.show();
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void passOnKeyTyped(Event event) {
-        System.out.println("passwordOnKeyTyped");
         String password = signUpPasswordTextField.getText();
-        int password_Length = password.length();
-        if(password_Length < 6) {
-            signUpPasswordTextField.setStyle("-fx-border-color: red");
-        }
-        else {
-            signUpPasswordTextField.setStyle("-fx-border-color: green");
+        if (password != null && password.length() >= 6 && password.matches(".*\\d.*")) {
+            signUpPasswordTextField.setStyle("-fx-border-color: #27ae60; -fx-border-radius: 3;");
+        } else {
+            signUpPasswordTextField.setStyle("-fx-border-color: #e74c3c; -fx-border-radius: 3;");
         }
     }
 
-
-    @javafx.fxml.FXML
+    @FXML
     public void userNameOnKeyTyped(Event event) {
-        hasUpdateusername=true;   /// to suggest first name on user text field
-
-        System.out.println("userNameOnKeyTyped");
+        hasUpdateusername = true;
         String userName = signUpUserNameTextField.getText();
-        int userName_Length = userName.length();
-        if(userName_Length < 4) {
-            signUpUserNameTextField.setStyle("-fx-border-color: red");
-        }
-        else {
-            signUpUserNameTextField.setStyle("-fx-border-color: green");
+        if (userName != null && userName.length() >= 4) {
+            signUpUserNameTextField.setStyle("-fx-border-color: #27ae60; -fx-border-radius: 3;");
+        } else {
+            signUpUserNameTextField.setStyle("-fx-border-color: #e74c3c; -fx-border-radius: 3;");
         }
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void conPassOnKeyTyped(Event event) {
-        System.out.println("confirmPasswordOnKeyTyped");
-        String password = signUpConfirmPasswordTextField.getText();
-        int confirmPasswordLength = password.length();
-        if(confirmPasswordLength < 6) {
-            signUpConfirmPasswordTextField.setStyle("-fx-border-color: red");
-
+        String pass = signUpPasswordTextField.getText();
+        String conPass = signUpConfirmPasswordTextField.getText();
+        if (conPass != null && !conPass.isEmpty() && conPass.equals(pass)) {
+            signUpConfirmPasswordTextField.setStyle("-fx-border-color: #27ae60; -fx-border-radius: 3;");
+        } else {
+            signUpConfirmPasswordTextField.setStyle("-fx-border-color: #e74c3c; -fx-border-radius: 3;");
         }
-        else {
-            signUpConfirmPasswordTextField.setStyle("-fx-border-color: green");
-        }
-
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void phoneNumberOnKeyTyped(Event event) {
-        System.out.println("phoneNumberOnKeyTyped");
         String phoneNumber = signUpPhoneNumberTextField.getText();
-        int phoneNumber_Length = phoneNumber.length();
-        if(phoneNumber_Length < 11) {
-            signUpPhoneNumberTextField.setStyle("-fx-border-color: red");
-
+        if (phoneNumber != null && phoneNumber.length() >= 11 && phoneNumber.matches("\\d+")) {
+            signUpPhoneNumberTextField.setStyle("-fx-border-color: #27ae60; -fx-border-radius: 3;");
+        } else {
+            signUpPhoneNumberTextField.setStyle("-fx-border-color: #e74c3c; -fx-border-radius: 3;");
         }
-        else {
-            signUpPhoneNumberTextField.setStyle("-fx-border-color: green");
-        }
-
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void firstNameOnKeyTyped(Event event) {
-        if(hasUpdateusername){
-            return; //early return
+        if (hasUpdateusername) {
+            return;
         }
-
-        String Creat_username = signUpFirstNameTextField.getText()
-                .toLowerCase()
-                .replace(" ", "");
-
-        signUpUserNameTextField.setText(Creat_username);     ///to suggest first name in username
-
-
+        String first = signUpFirstNameTextField.getText();
+        if (first != null) {
+            String autoUser = first.toLowerCase().replaceAll("[^a-z0-9]", "");
+            signUpUserNameTextField.setText(autoUser);
+        }
     }
 }
-
