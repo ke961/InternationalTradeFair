@@ -8,83 +8,127 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="543.0" prefWidth="841.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="keya.internationaltradefairltd.EventManager.VendorRegistrationController">
+<AnchorPane prefHeight="650.0" prefWidth="950.0" styleClass="app-gradient-bg" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="keya.internationaltradefairltd.EventManager.VendorRegistrationController">
    <children>
-      <TabPane fx:id="mainTab" prefHeight="543.0" prefWidth="842.0" style="-fx-background-color: #548581;" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="mainTab" prefHeight="650.0" prefWidth="950.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab fx:id="vendorRegistrationTab" text="Vendor Registration">
+          <!-- Tab 1: Vendor Overview -->
+          <Tab fx:id="vendorRegistrationTab" text="Vendor Center">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="950.0">
                      <children>
-                        <Label contentDisplay="CENTER" layoutX="320.0" layoutY="46.0" prefHeight="66.0" prefWidth="191.0" text="Trade Fair System" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold Italic" size="20.0" />
-                           </font>
-                        </Label>
-                        <Button layoutX="313.0" layoutY="140.0" mnemonicParsing="false" onAction="#creatFormBTOnAction" prefHeight="60.0" prefWidth="214.0" text="Creat Vendor Registration Form">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="356.0" layoutY="214.0" mnemonicParsing="false" onAction="#viewApplicantsBTOnAction" prefHeight="42.0" prefWidth="112.0" text="View Applicants">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="740.0" layoutY="473.0" mnemonicParsing="false" onAction="#vendorRegBackBTOnAction" prefHeight="26.0" prefWidth="87.0" text="Back" />
+                        <VBox alignment="CENTER" layoutX="225.0" layoutY="80.0" prefHeight="420.0" prefWidth="500.0" spacing="25.0" styleClass="card-panel" style="-fx-padding: 35 40 35 40;">
+                           <children>
+                              <Label styleClass="badge-pill" text="EXHIBITOR ADMISSIONS" />
+                              <VBox alignment="CENTER" spacing="5.0">
+                                 <children>
+                                    <Label styleClass="title-hero" text="Vendor Applications" />
+                                    <Label styleClass="subtitle-text" text="Review prospective exhibitors, manage booth requests, and grant approvals" textAlignment="CENTER" />
+                                 </children>
+                              </VBox>
+                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#creatFormBTOnAction" prefHeight="48.0" styleClass="btn-nav-card" text="📝  Create / Submit New Vendor Application" />
+                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#viewApplicantsBTOnAction" prefHeight="48.0" styleClass="btn-nav-card" text="👥  View All Applicants &amp; Approve Exhibitors" />
+                              <Button mnemonicParsing="false" onAction="#vendorRegBackBTOnAction" prefHeight="32.0" prefWidth="120.0" styleClass="btn-secondary" text="← Dashboard" />
+                           </children>
+                        </VBox>
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab fx:id="viewApplicantsTab" text="View Applicants">
+
+          <!-- Tab 2: View Applicants Table -->
+          <Tab fx:id="viewApplicantsTab" text="All Applicants">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="423.0" prefWidth="655.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="950.0">
                      <children>
-                        <TableView fx:id="applicantsTableView" layoutX="153.0" layoutY="25.0" prefHeight="200.0" prefWidth="616.0">
-                          <columns>
-                            <TableColumn fx:id="companyTableColumn" prefWidth="143.199951171875" text="Company" />
-                            <TableColumn fx:id="applicantsNameTableColumn" prefWidth="160.800048828125" text="Aplicant's Name" />
-                              <TableColumn fx:id="emailTableColumn" prefWidth="153.59994506835938" text="Email" />
-                              <TableColumn fx:id="phoneNumberTableColumn" prefWidth="158.4000244140625" text="Phone Number" />
-                          </columns>
-                        </TableView>
-                        <Button layoutX="14.0" layoutY="91.0" mnemonicParsing="false" onAction="#showApplicantsBTOnAction" prefHeight="42.0" prefWidth="121.0" text="Show Applicants" />
-                        <Button layoutX="408.0" layoutY="247.0" mnemonicParsing="false" onAction="#showDetailesBTOnAction" prefHeight="42.0" prefWidth="105.0" text="Show Detailes" />
-                        <Button layoutX="738.0" layoutY="469.0" mnemonicParsing="false" onAction="#viewApplicantsBackBTOnAction" prefHeight="26.0" prefWidth="87.0" text="Back" />
+                        <VBox layoutX="30.0" layoutY="20.0" prefWidth="890.0" spacing="15.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" spacing="15.0">
+                                 <children>
+                                    <Label styleClass="title-section" text="Registered Exhibitor Applications" />
+                                    <Button mnemonicParsing="false" onAction="#showApplicantsBTOnAction" style="-fx-padding: 5px 12px;" text="Refresh List" />
+                                 </children>
+                              </HBox>
+
+                              <TableView fx:id="applicantsTableView" prefHeight="380.0" prefWidth="890.0">
+                                <columns>
+                                  <TableColumn fx:id="companyTableColumn" prefWidth="240.0" text="Company / Organization" />
+                                  <TableColumn fx:id="applicantsNameTableColumn" prefWidth="220.0" text="Applicant / Contact Person" />
+                                  <TableColumn fx:id="emailTableColumn" prefWidth="230.0" text="Email Address" />
+                                  <TableColumn fx:id="phoneNumberTableColumn" prefWidth="190.0" text="Phone Number" />
+                                </columns>
+                              </TableView>
+
+                              <HBox alignment="CENTER_RIGHT" spacing="15.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#showDetailesBTOnAction" prefHeight="35.0" prefWidth="170.0" text="Inspect Application →" />
+                                    <Button mnemonicParsing="false" onAction="#viewApplicantsBackBTOnAction" prefHeight="35.0" prefWidth="90.0" styleClass="btn-secondary" text="← Back" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab fx:id="detailesTab" text="Detailes">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="423.0" prefWidth="655.0">
-                     <children>
-                        <TextArea fx:id="productDetailesTextArea" layoutX="137.0" layoutY="24.0" prefHeight="115.0" prefWidth="615.0" />
-                        <Label layoutX="14.0" layoutY="62.0" text="Product Detailes" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <Button layoutX="283.0" layoutY="184.0" mnemonicParsing="false" onAction="#approveBTOnAction" prefHeight="26.0" prefWidth="157.0" text="Approve" />
-                        <Button layoutX="466.0" layoutY="184.0" mnemonicParsing="false" onAction="#rejectBTOnAction" prefHeight="26.0" prefWidth="158.0" text="Reject" />
-                        <Button layoutX="388.0" layoutY="150.0" mnemonicParsing="false" onAction="#viewRequestsBTOnAction" prefHeight="26.0" prefWidth="157.0" text="View Requests" />
-                        <Button layoutX="740.0" layoutY="466.0" mnemonicParsing="false" onAction="#detailesBackBTOnAction" prefHeight="26.0" prefWidth="87.0" text="Back" />
-                        <TableView fx:id="approvedApplicantsTableView1" layoutX="192.0" layoutY="238.0" prefHeight="200.0" prefWidth="616.0">
-                           <columns>
-                              <TableColumn fx:id="approvedCompanyTableColumn1" prefWidth="143.199951171875" text="Company" />
-                              <TableColumn fx:id="approvedApplicantsNameTableColumn1" prefWidth="160.800048828125" text="Aplicant's Name" />
-                              <TableColumn fx:id="approvedEmailTableColumn1" prefWidth="153.59994506835938" text="Email" />
-                              <TableColumn fx:id="approvedPhoneNumberTableColumn1" prefWidth="158.4000244140625" text="Phone Number" />
-                           </columns>
-                        </TableView>
-                        <Button layoutX="14.0" layoutY="299.0" mnemonicParsing="false" onAction="#viewApprovedApplicantsBTOnAction" prefHeight="26.0" prefWidth="157.0" text="View Approved Applicants" />
-                        <Button layoutX="14.0" layoutY="338.0" mnemonicParsing="false" onAction="#updateApprovedApBTOnAction" prefHeight="26.0" prefWidth="157.0" text="Update" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
+
+          <!-- Tab 3: Details & Approval -->
+          <Tab fx:id="detailesTab" text="Applicant Details &amp; Approval">
+             <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="950.0">
+                   <children>
+                      <VBox layoutX="30.0" layoutY="15.0" prefWidth="890.0" spacing="12.0">
+                         <children>
+                            <!-- Top Details Card -->
+                            <VBox spacing="8.0" styleClass="card-panel" style="-fx-padding: 15 20 15 20;">
+                               <children>
+                                  <Label styleClass="title-section" text="Product Specifications &amp; Requirements" />
+                                  <TextArea fx:id="productDetailesTextArea" editable="false" prefHeight="130.0" prefWidth="850.0" wrapText="true" />
+                                  <HBox alignment="CENTER_LEFT" spacing="15.0">
+                                     <children>
+                                        <Button mnemonicParsing="false" onAction="#approveBTOnAction" prefHeight="35.0" prefWidth="160.0" styleClass="btn-success" text="✓ Approve Vendor" />
+                                        <Button mnemonicParsing="false" onAction="#rejectBTOnAction" prefHeight="35.0" prefWidth="160.0" styleClass="btn-danger" text="✕ Reject Application" />
+                                        <Button mnemonicParsing="false" onAction="#viewRequestsBTOnAction" prefHeight="35.0" prefWidth="180.0" styleClass="btn-secondary" text="⚡ View Logistics Requests" />
+                                     </children>
+                                  </HBox>
+                               </children>
+                            </VBox>
+
+                            <!-- Approved Vendors Table -->
+                            <VBox spacing="6.0">
+                               <children>
+                                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                     <children>
+                                        <Label style="-fx-font-weight: bold; -fx-text-fill: #2dd4bf;" text="Approved Vendors (Allotted / Eligible):" />
+                                        <Button mnemonicParsing="false" onAction="#updateApprovedApBTOnAction" style="-fx-padding: 3px 10px; -fx-font-size: 11px;" text="Refresh" />
+                                     </children>
+                                  </HBox>
+                                  <TableView fx:id="approvedApplicantsTableView1" prefHeight="180.0" prefWidth="890.0">
+                                     <columns>
+                                        <TableColumn fx:id="approvedCompanyTableColumn1" prefWidth="240.0" text="Approved Company" />
+                                        <TableColumn fx:id="approvedApplicantsNameTableColumn1" prefWidth="220.0" text="Contact Person" />
+                                        <TableColumn fx:id="approvedEmailTableColumn1" prefWidth="230.0" text="Email" />
+                                        <TableColumn fx:id="approvedPhoneNumberTableColumn1" prefWidth="190.0" text="Phone Number" />
+                                     </columns>
+                                  </TableView>
+                               </children>
+                            </VBox>
+
+                            <HBox alignment="CENTER_RIGHT">
+                               <children>
+                                  <Button mnemonicParsing="false" onAction="#detailesBackBTOnAction" prefHeight="28.0" prefWidth="90.0" styleClass="btn-secondary" text="← Back" />
+                               </children>
+                            </HBox>
+                         </children>
+                      </VBox>
+                   </children>
+                </AnchorPane>
+             </content>
+          </Tab>
         </tabs>
       </TabPane>
    </children>
